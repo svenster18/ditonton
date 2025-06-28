@@ -9,6 +9,8 @@ import 'package:dartz/dartz.dart' as _i2;
 import 'package:ditonton/common/failure.dart' as _i5;
 import 'package:ditonton/domain/entities/tv_series.dart' as _i6;
 import 'package:ditonton/domain/usecases/get_on_the_air_tv_series.dart' as _i3;
+import 'package:ditonton/domain/usecases/get_popular_tv_series.dart' as _i7;
+import 'package:ditonton/domain/usecases/get_top_rated_tv_series.dart' as _i8;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -41,6 +43,62 @@ class _FakeEither_0<L, R> extends _i1.SmartFake implements _i2.Either<L, R> {
 class MockGetOnTheAirTvSeries extends _i1.Mock
     implements _i3.GetOnTheAirTvSeries {
   MockGetOnTheAirTvSeries() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i4.Future<_i2.Either<_i5.Failure, List<_i6.TvSeries>>> execute() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #execute,
+          [],
+        ),
+        returnValue:
+            _i4.Future<_i2.Either<_i5.Failure, List<_i6.TvSeries>>>.value(
+                _FakeEither_0<_i5.Failure, List<_i6.TvSeries>>(
+          this,
+          Invocation.method(
+            #execute,
+            [],
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.Failure, List<_i6.TvSeries>>>);
+}
+
+/// A class which mocks [GetPopularTvSeries].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockGetPopularTvSeries extends _i1.Mock
+    implements _i7.GetPopularTvSeries {
+  MockGetPopularTvSeries() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i4.Future<_i2.Either<_i5.Failure, List<_i6.TvSeries>>> execute() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #execute,
+          [],
+        ),
+        returnValue:
+            _i4.Future<_i2.Either<_i5.Failure, List<_i6.TvSeries>>>.value(
+                _FakeEither_0<_i5.Failure, List<_i6.TvSeries>>(
+          this,
+          Invocation.method(
+            #execute,
+            [],
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.Failure, List<_i6.TvSeries>>>);
+}
+
+/// A class which mocks [GetTopRatedTvSeries].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockGetTopRatedTvSeries extends _i1.Mock
+    implements _i8.GetTopRatedTvSeries {
+  MockGetTopRatedTvSeries() {
     _i1.throwOnMissingStub(this);
   }
 
