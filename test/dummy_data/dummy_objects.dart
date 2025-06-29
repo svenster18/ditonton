@@ -1,7 +1,9 @@
 import 'package:ditonton/data/models/movie_table.dart';
+import 'package:ditonton/data/models/tv_series_table.dart';
 import 'package:ditonton/domain/entities/genre.dart';
 import 'package:ditonton/domain/entities/movie.dart';
 import 'package:ditonton/domain/entities/movie_detail.dart';
+import 'package:ditonton/domain/entities/tv_series.dart';
 
 final testMovie = Movie(
   adult: false,
@@ -81,3 +83,20 @@ final testMovieMap = {
   'posterPath': 'posterPath',
   'title': 'title',
 };
+
+
+final testTvSeriesCache = TvSeriesTable(
+  id: 557,
+  name: 'Spider-Man',
+  posterPath: '/rweIrveL43TaxUN0akQEaAXL6x0.jpg',
+  overview:
+  'After being bitten by a genetically altered spider, nerdy high school student Peter Parker is endowed with amazing powers to become the Amazing superhero known as Spider-Man.',
+);
+
+final testTvSeriesFromCache = TvSeries.watchlist(
+  id: 557,
+  overview:
+  'After being bitten by a genetically altered spider, nerdy high school student Peter Parker is endowed with amazing powers to become the Amazing superhero known as Spider-Man.',
+  posterPath: '/rweIrveL43TaxUN0akQEaAXL6x0.jpg',
+  name: 'Spider-Man',
+);

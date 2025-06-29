@@ -80,7 +80,7 @@ void main() {
       await repository.getNowPlayingMovies();
       // assert
       verify(mockNetworkInfo.isConnected);
-    });;
+    });
 
     group('when device is online', () {
       setUp(() {

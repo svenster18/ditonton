@@ -4,17 +4,14 @@ import 'package:ditonton/domain/entities/tv_series.dart';
 import 'package:ditonton/domain/repositories/movie_repository.dart';
 import 'package:ditonton/common/failure.dart';
 
+import '../repositories/tv_series_repository.dart';
+
 class GetOnTheAirTvSeries {
-  // final MovieRepository repository;
+  final TvSeriesRepository repository;
 
-  // GetOnTheAirTvSeries(this.repository);
-  GetOnTheAirTvSeries();
-
-  // Future<Either<Failure, List<Movie>>> execute() {
-  //   // return repository.getOnTheAirTvSeries();
-  // }
+  GetOnTheAirTvSeries(this.repository);
 
   Future<Either<Failure, List<TvSeries>>> execute() async {
-    return Right(<TvSeries>[]);
+    return repository.getOnTheAirTvSeries();
   }
 }
