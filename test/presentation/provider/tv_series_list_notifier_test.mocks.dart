@@ -96,6 +96,15 @@ class MockGetPopularTvSeries extends _i1.Mock
   }
 
   @override
+  _i2.TvSeriesRepository get repository => (super.noSuchMethod(
+        Invocation.getter(#repository),
+        returnValue: _FakeTvSeriesRepository_0(
+          this,
+          Invocation.getter(#repository),
+        ),
+      ) as _i2.TvSeriesRepository);
+
+  @override
   _i5.Future<_i3.Either<_i6.Failure, List<_i7.TvSeries>>> execute() =>
       (super.noSuchMethod(
         Invocation.method(
