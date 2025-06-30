@@ -541,10 +541,38 @@ class MockDatabaseHelper extends _i1.Mock implements _i21.DatabaseHelper {
       ) as _i6.Future<void>);
 
   @override
+  _i6.Future<void> insertTvSeriesCacheTransaction(
+    List<_i20.TvSeriesTable>? tvSeriesList,
+    String? category,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #insertTvSeriesCacheTransaction,
+          [
+            tvSeriesList,
+            category,
+          ],
+        ),
+        returnValue: _i6.Future<void>.value(),
+        returnValueForMissingStub: _i6.Future<void>.value(),
+      ) as _i6.Future<void>);
+
+  @override
   _i6.Future<List<Map<String, dynamic>>> getCacheMovies(String? category) =>
       (super.noSuchMethod(
         Invocation.method(
           #getCacheMovies,
+          [category],
+        ),
+        returnValue: _i6.Future<List<Map<String, dynamic>>>.value(
+            <Map<String, dynamic>>[]),
+      ) as _i6.Future<List<Map<String, dynamic>>>);
+
+  @override
+  _i6.Future<List<Map<String, dynamic>>> getCacheTvSeries(String? category) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getCacheTvSeries,
           [category],
         ),
         returnValue: _i6.Future<List<Map<String, dynamic>>>.value(

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:ditonton/data/models/movie_table.dart';
+import 'package:ditonton/data/models/tv_series_table.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DatabaseHelper {
@@ -23,6 +24,7 @@ class DatabaseHelper {
 
   static const String _tblWatchlist = 'watchlist';
   static const String _tblCache = 'cache';
+  static const String _tblTvSeriesCache = 'tv_series_cache';
 
   Future<Database> _initDb() async {
     final path = await getDatabasesPath();
@@ -64,6 +66,18 @@ class DatabaseHelper {
     });
   }
 
+  Future<void> insertTvSeriesCacheTransaction(
+      List<TvSeriesTable> tvSeriesList, String category) async {
+    final db = await database;
+    db!.transaction((txn) async {
+      for (final tvSeries in tvSeriesList) {
+        final tvSeriesJson = tvSeries.toJson();
+        tvSeriesJson['category'] = category;
+        txn.insert(_tblCache, tvSeriesJson);
+      }
+    });
+  }
+
   Future<List<Map<String, dynamic>>> getCacheMovies(String category) async {
     final db = await database;
     final List<Map<String, dynamic>> results = await db!.query(
@@ -75,10 +89,21 @@ class DatabaseHelper {
     return results;
   }
 
+  Future<List<Map<String, dynamic>>> getCacheTvSeries(String category) async {
+    final db = await database;
+    final List<Map<String, dynamic>> results = await db!.query(
+      _tblTvSeriesCache,
+      where: 'category = ?',
+      whereArgs: [category],
+    );
+
+    return results;
+  }
+
   Future<int> clearCache(String category) async {
     final db = await database;
     return await db!.delete(
-      _tblCache,
+      _tblTvSeriesCache,
       where: 'category = ?',
       whereArgs: [category],
     );
