@@ -31,8 +31,12 @@ class TvSeriesRemoteDataSourceImpl implements TvSeriesRemoteDataSource {
   }
 
   @override
-  Future<List<TvSeriesModel>> getPopularTvSeries() {
-    // TODO: implement getPopularTvSeries
-    throw UnimplementedError();
+  Future<List<TvSeriesModel>> getPopularTvSeries() async {
+    final response = await client.get(Uri.parse('$BASE_URL/tv/popular?$API_KEY'));
+    if (response.statusCode == 200) {
+      return TvSeriesResponse.fromJson(json.decode(response.body)).tvSeriesList;
+    } else {
+      throw ServerException();
+    }
   }
 }
