@@ -41,7 +41,6 @@ class MovieRepositoryImpl implements MovieRepository {
         return Left(CacheFailure(e.message));
       }
     }
-    ;
   }
 
   @override
