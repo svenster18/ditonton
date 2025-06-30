@@ -14,14 +14,18 @@ class TvSeriesRepositoryImpl implements TvSeriesRepository {
   final TvSeriesLocalDataSource localDataSource;
   final NetworkInfo networkInfo;
 
-  TvSeriesRepositoryImpl({required this.remoteDataSource, required this.localDataSource, required this.networkInfo});
+  TvSeriesRepositoryImpl(
+      {required this.remoteDataSource,
+      required this.localDataSource,
+      required this.networkInfo});
 
   @override
   Future<Either<Failure, List<TvSeries>>> getOnTheAirTvSeries() async {
     if (await networkInfo.isConnected) {
       try {
         final result = await remoteDataSource.getOnTheAirTvSeries();
-        localDataSource.cacheOnTheAirTvSeries(result.map((tvSeries) => TvSeriesTable.fromDTO(tvSeries)).toList());
+        localDataSource.cacheOnTheAirTvSeries(
+            result.map((tvSeries) => TvSeriesTable.fromDTO(tvSeries)).toList());
         return Right(result.map((model) => model.toEntity()).toList());
       } on ServerException {
         return Left(ServerFailure(''));

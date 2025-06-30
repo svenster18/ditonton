@@ -67,24 +67,25 @@ class TvSeriesModel extends Equatable {
     );
   }
 
-  factory TvSeriesModel.fromJson(Map<String, dynamic> json) => _$TvSeriesModelFromJson(json);
+  factory TvSeriesModel.fromJson(Map<String, dynamic> json) =>
+      _$TvSeriesModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$TvSeriesModelToJson(this);
 
   @override
   List<Object?> get props => [
-    backdropPath,
-    genreIds,
-    id,
-    originCountry,
-    originalLanguage,
-    originalName,
-    overview,
-    popularity,
-    posterPath,
-    firstAirDate,
-    name,
-    voteAverage,
-    voteCount,
-  ];
+        backdropPath,
+        genreIds,
+        id,
+        originCountry,
+        originalLanguage,
+        originalName,
+        overview,
+        popularity,
+        posterPath,
+        firstAirDate,
+        name,
+        voteAverage,
+        voteCount,
+      ];
 }

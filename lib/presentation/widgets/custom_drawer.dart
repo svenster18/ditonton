@@ -11,7 +11,8 @@ class CustomDrawer extends StatefulWidget {
   State<CustomDrawer> createState() => _CustomDrawerState();
 }
 
-class _CustomDrawerState extends State<CustomDrawer> with SingleTickerProviderStateMixin {
+class _CustomDrawerState extends State<CustomDrawer>
+    with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
 
   @override
@@ -30,10 +31,8 @@ class _CustomDrawerState extends State<CustomDrawer> with SingleTickerProviderSt
         children: [
           UserAccountsDrawerHeader(
             currentAccountPicture: CircleAvatar(
-              backgroundImage: NetworkImage(
-                'https://raw.githubusercontent.com/dicodingacademy/assets/main/flutter_expert_academy/dicoding-icon.png'
-              )
-            ),
+                backgroundImage: NetworkImage(
+                    'https://raw.githubusercontent.com/dicodingacademy/assets/main/flutter_expert_academy/dicoding-icon.png')),
             accountName: Text('John Doe'),
             accountEmail: Text('ditonton@dicoding.com'),
           ),
@@ -59,24 +58,23 @@ class _CustomDrawerState extends State<CustomDrawer> with SingleTickerProviderSt
     return GestureDetector(
       onTap: toggle,
       child: AnimatedBuilder(
-        animation: _animationController,
-        builder: (context, child) {
-          double slide = 255.0 * _animationController.value;
-          double scale = 1 - (0.3 * _animationController.value);
+          animation: _animationController,
+          builder: (context, child) {
+            double slide = 255.0 * _animationController.value;
+            double scale = 1 - (0.3 * _animationController.value);
 
-          return Stack(
-            children: [
-              _buildDrawer(),
-              Transform(
-                  transform: Matrix4.identity()
-                    ..translate(slide)
-                    ..scale(scale),
-                  alignment: Alignment.centerLeft,
-                  child: widget.content),
-            ],
-          );
-        }
-      ),
+            return Stack(
+              children: [
+                _buildDrawer(),
+                Transform(
+                    transform: Matrix4.identity()
+                      ..translate(slide)
+                      ..scale(scale),
+                    alignment: Alignment.centerLeft,
+                    child: widget.content),
+              ],
+            );
+          }),
     );
   }
 }

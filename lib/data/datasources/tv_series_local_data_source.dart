@@ -28,5 +28,4 @@ class TvSeriesLocalDataSourceImpl implements TvSeriesLocalDataSource {
       throw CacheException("Can't get the data :(");
     }
   }
-
 }

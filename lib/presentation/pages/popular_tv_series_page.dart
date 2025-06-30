@@ -18,12 +18,14 @@ class PopularTvSeriesPage extends StatelessWidget {
           return Center(
             child: CircularProgressIndicator(),
           );
-        } else if (data.state == RequestState.Loaded){
-          return ListView.builder(itemBuilder: (context, index) {
-            final tvSeries = data.tvSeries[index];
-            return TvSeriesCard(tvSeries);
-          },
-          itemCount: data.tvSeries.length,);
+        } else if (data.state == RequestState.Loaded) {
+          return ListView.builder(
+            itemBuilder: (context, index) {
+              final tvSeries = data.tvSeries[index];
+              return TvSeriesCard(tvSeries);
+            },
+            itemCount: data.tvSeries.length,
+          );
         } else {
           return Center(
             key: Key('error_message'),

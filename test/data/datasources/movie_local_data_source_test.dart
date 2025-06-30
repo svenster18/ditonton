@@ -18,12 +18,14 @@ void main() {
   group('cache now playing movies', () {
     test('should call database helper to save data', () async {
       //arrange
-      when(mockDatabaseHelper.clearCache('now playing')).thenAnswer((_) async => 1);
+      when(mockDatabaseHelper.clearCache('now playing'))
+          .thenAnswer((_) async => 1);
       // act
       await dataSource.cacheNowPlayingMovies([testMovieCache]);
       // assert
       verify(mockDatabaseHelper.clearCache('now playing'));
-      verify(mockDatabaseHelper.insertCacheTransaction([testMovieCache], 'now playing'));
+      verify(mockDatabaseHelper
+          .insertCacheTransaction([testMovieCache], 'now playing'));
     });
 
     test('should return list of movies from db when data exists', () async {

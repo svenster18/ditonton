@@ -41,7 +41,9 @@ void main() {
       expect(result, equals(tTvSeriesList));
     });
 
-    test('should throw a ServerException when the response code is 404 or other', () async {
+    test(
+        'should throw a ServerException when the response code is 404 or other',
+        () async {
       // arrange
       when(mockHttpClient.get(Uri.parse('$BASE_URL/tv/on_the_air?$API_KEY')))
           .thenAnswer((_) async => http.Response('Not Found', 404));

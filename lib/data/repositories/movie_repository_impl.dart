@@ -40,7 +40,8 @@ class MovieRepositoryImpl implements MovieRepository {
       } on CacheException catch (e) {
         return Left(CacheFailure(e.message));
       }
-    };
+    }
+    ;
   }
 
   @override

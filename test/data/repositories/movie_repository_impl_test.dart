@@ -4,7 +4,6 @@ import 'package:dartz/dartz.dart';
 import 'package:ditonton/data/models/genre_model.dart';
 import 'package:ditonton/data/models/movie_detail_model.dart';
 import 'package:ditonton/data/models/movie_model.dart';
-import 'package:ditonton/data/models/movie_table.dart';
 import 'package:ditonton/data/repositories/movie_repository_impl.dart';
 import 'package:ditonton/common/exception.dart';
 import 'package:ditonton/common/failure.dart';
@@ -70,7 +69,6 @@ void main() {
   final tMovieList = <Movie>[tMovie];
 
   group('Now Playing Movies', () {
-
     test('should check if the device is online', () async {
       // arrange
       when(mockNetworkInfo.isConnected).thenAnswer((_) async => true);
@@ -148,7 +146,8 @@ void main() {
 
       test('should return CacheFailure when app has no cache', () async {
         // arrange
-        when(mockLocalDataSource.getCachedNowPlayingMovies()).thenThrow(CacheException('No Cache'));
+        when(mockLocalDataSource.getCachedNowPlayingMovies())
+            .thenThrow(CacheException('No Cache'));
         // act
         final result = await repository.getNowPlayingMovies();
         // assert
