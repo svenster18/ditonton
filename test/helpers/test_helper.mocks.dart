@@ -472,6 +472,24 @@ class MockTvSeriesRepository extends _i1.Mock
               ),
             )),
           ) as _i6.Future<_i2.Either<_i7.Failure, List<_i16.TvSeries>>>);
+
+  @override
+  _i6.Future<_i2.Either<_i7.Failure, List<_i16.TvSeries>>>
+      getTopRatedTvSeries() => (super.noSuchMethod(
+            Invocation.method(
+              #getTopRatedTvSeries,
+              [],
+            ),
+            returnValue:
+                _i6.Future<_i2.Either<_i7.Failure, List<_i16.TvSeries>>>.value(
+                    _FakeEither_0<_i7.Failure, List<_i16.TvSeries>>(
+              this,
+              Invocation.method(
+                #getTopRatedTvSeries,
+                [],
+              ),
+            )),
+          ) as _i6.Future<_i2.Either<_i7.Failure, List<_i16.TvSeries>>>);
 }
 
 /// A class which mocks [TvSeriesRemoteDataSource].
