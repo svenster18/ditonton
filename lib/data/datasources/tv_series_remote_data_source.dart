@@ -8,6 +8,7 @@ import '../models/tv_series_response.dart';
 
 abstract class TvSeriesRemoteDataSource {
   Future<List<TvSeriesModel>> getOnTheAirTvSeries();
+  Future<List<TvSeriesModel>> getPopularTvSeries();
 }
 
 class TvSeriesRemoteDataSourceImpl implements TvSeriesRemoteDataSource {
@@ -27,5 +28,11 @@ class TvSeriesRemoteDataSourceImpl implements TvSeriesRemoteDataSource {
     } else {
       throw ServerException();
     }
+  }
+
+  @override
+  Future<List<TvSeriesModel>> getPopularTvSeries() {
+    // TODO: implement getPopularTvSeries
+    throw UnimplementedError();
   }
 }

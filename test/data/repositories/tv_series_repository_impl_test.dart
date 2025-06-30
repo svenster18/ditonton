@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:ditonton/common/exception.dart';
 import 'package:ditonton/common/failure.dart';
@@ -150,6 +152,41 @@ void main() {
         verify(mockLocalDataSource.getCachedOnTheAirTvSeries());
         expect(result, Left(CacheFailure('No Cache')));
       });
+    });
+  });
+
+  group('Popular Tv Series', () {
+    test('should return tv series list when call to data source is success', () async {
+      // arrange
+      when(mockRemoteDataSource.getPopularTvSeries())
+          .thenAnswer((_) async => tTvSeriesModelList);
+      // act
+      final result = await repository.getPopularTvSeries();
+      // assert
+      /* workaround to test List in Right. Issue: https://github.com/spebbe/dartz/issues/80 */
+      final resultList = result.getOrElse(() => []);
+      expect(resultList, tTvSeriesList);
+    });
+
+    test('should return server failure when call to data source is unsuccessful', () async {
+      // arrange
+      when(mockRemoteDataSource.getPopularTvSeries())
+          .thenThrow(ServerException());
+      // act
+      final result = await repository.getPopularTvSeries();
+      // assert
+      expect(result, Left(ServerFailure('')));
+    });
+
+    test('should return connection failure when device is not connected to the internet', () async {
+       // arrange
+      when(mockRemoteDataSource.getPopularTvSeries())
+          .thenThrow(SocketException('Failed to connect to the network'));
+      // act
+      final result = await repository.getPopularTvSeries();
+      // assert
+      expect(
+          result, Left(ConnectionFailure('Failed to connect to the network')));
     });
   });
 }

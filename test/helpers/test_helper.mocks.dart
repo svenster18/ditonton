@@ -493,6 +493,17 @@ class MockTvSeriesRemoteDataSource extends _i1.Mock
         returnValue:
             _i6.Future<List<_i18.TvSeriesModel>>.value(<_i18.TvSeriesModel>[]),
       ) as _i6.Future<List<_i18.TvSeriesModel>>);
+
+  @override
+  _i6.Future<List<_i18.TvSeriesModel>> getPopularTvSeries() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getPopularTvSeries,
+          [],
+        ),
+        returnValue:
+            _i6.Future<List<_i18.TvSeriesModel>>.value(<_i18.TvSeriesModel>[]),
+      ) as _i6.Future<List<_i18.TvSeriesModel>>);
 }
 
 /// A class which mocks [TvSeriesLocalDataSource].
