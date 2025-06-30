@@ -8,7 +8,7 @@ part of 'tv_series_response.dart';
 
 TvSeriesResponse _$TvSeriesResponseFromJson(Map<String, dynamic> json) =>
     TvSeriesResponse(
-      (json['results'] as List<dynamic>)
+      tvSeriesList: (json['results'] as List<dynamic>)
           .map((e) => TvSeriesModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
