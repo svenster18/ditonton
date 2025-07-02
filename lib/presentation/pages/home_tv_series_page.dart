@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/presentation/pages/about_page.dart';
+import 'package:ditonton/presentation/pages/popular_tv_series_page.dart';
 import 'package:ditonton/presentation/pages/search_page.dart';
 import 'package:ditonton/common/state_enum.dart';
 import 'package:ditonton/presentation/provider/tv_series_list_notifier.dart';
@@ -21,7 +22,7 @@ class _HomeTvSeriesPageState extends State<HomeTvSeriesPage> {
   void initState() {
     super.initState();
     Future.microtask(
-            () => Provider.of<TvSeriesListNotifier>(context, listen: false)
+        () => Provider.of<TvSeriesListNotifier>(context, listen: false)
           ..fetchOnTheAirTvSeries()
           ..fetchPopularTvSeries()
           ..fetchTopRatedTvSeries());
@@ -110,8 +111,8 @@ class _HomeTvSeriesPageState extends State<HomeTvSeriesPage> {
               }),
               _buildSubHeading(
                 title: 'Popular',
-                onTap: () => {}
-                    // Navigator.pushNamed(context, PopularTvSeriesPage.ROUTE_NAME),
+                onTap: () => Navigator.pushNamed(
+                    context, PopularTvSeriesPage.ROUTE_NAME),
               ),
               Consumer<TvSeriesListNotifier>(builder: (context, data, child) {
                 final state = data.popularTvSeriesState;
@@ -125,11 +126,9 @@ class _HomeTvSeriesPageState extends State<HomeTvSeriesPage> {
                   return Text('Failed');
                 }
               }),
-              _buildSubHeading(
-                title: 'Top Rated',
-                onTap: () => {}
-                    // Navigator.pushNamed(context, TopRatedTvSeriesPage.ROUTE_NAME),
-              ),
+              _buildSubHeading(title: 'Top Rated', onTap: () => {}
+                  // Navigator.pushNamed(context, TopRatedTvSeriesPage.ROUTE_NAME),
+                  ),
               Consumer<TvSeriesListNotifier>(builder: (context, data, child) {
                 final state = data.topRatedTvSeriesState;
                 if (state == RequestState.Loading) {

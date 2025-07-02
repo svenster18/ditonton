@@ -4,8 +4,19 @@ import 'package:ditonton/presentation/widgets/tv_series_card_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class PopularTvSeriesPage extends StatelessWidget {
+class PopularTvSeriesPage extends StatefulWidget {
   static const ROUTE_NAME = '/popular-tv-series';
+
+  @override
+  State<PopularTvSeriesPage> createState() => _PopularTvSeriesPageState();
+}
+
+class _PopularTvSeriesPageState extends State<PopularTvSeriesPage> {
+  @override
+  void initState() {
+    super.initState();
+    Future.microtask(() => Provider.of<PopularTvSeriesNotifier>(context, listen: false).fetchPopularTvSeries());
+  }
 
   @override
   Widget build(BuildContext context) {

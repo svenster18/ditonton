@@ -3,7 +3,8 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:ui' as _i7;
+import 'dart:async' as _i7;
+import 'dart:ui' as _i8;
 
 import 'package:ditonton/common/state_enum.dart' as _i4;
 import 'package:ditonton/domain/entities/tv_series.dart' as _i5;
@@ -84,16 +85,17 @@ class MockPopularTvSeriesNotifier extends _i1.Mock
       ) as bool);
 
   @override
-  void fetchPopularTvSeries() => super.noSuchMethod(
+  _i7.Future<void> fetchPopularTvSeries() => (super.noSuchMethod(
         Invocation.method(
           #fetchPopularTvSeries,
           [],
         ),
-        returnValueForMissingStub: null,
-      );
+        returnValue: _i7.Future<void>.value(),
+        returnValueForMissingStub: _i7.Future<void>.value(),
+      ) as _i7.Future<void>);
 
   @override
-  void addListener(_i7.VoidCallback? listener) => super.noSuchMethod(
+  void addListener(_i8.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #addListener,
           [listener],
@@ -102,7 +104,7 @@ class MockPopularTvSeriesNotifier extends _i1.Mock
       );
 
   @override
-  void removeListener(_i7.VoidCallback? listener) => super.noSuchMethod(
+  void removeListener(_i8.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #removeListener,
           [listener],
