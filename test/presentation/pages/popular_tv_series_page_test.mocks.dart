@@ -3,14 +3,15 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:ui' as _i6;
+import 'dart:ui' as _i7;
 
-import 'package:ditonton/common/state_enum.dart' as _i3;
-import 'package:ditonton/domain/entities/tv_series.dart' as _i4;
+import 'package:ditonton/common/state_enum.dart' as _i4;
+import 'package:ditonton/domain/entities/tv_series.dart' as _i5;
+import 'package:ditonton/domain/usecases/get_popular_tv_series.dart' as _i2;
 import 'package:ditonton/presentation/provider/popular_tv_series_notifier.dart'
-    as _i2;
+    as _i3;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:mockito/src/dummies.dart' as _i5;
+import 'package:mockito/src/dummies.dart' as _i6;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -26,31 +27,51 @@ import 'package:mockito/src/dummies.dart' as _i5;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
+class _FakeGetPopularTvSeries_0 extends _i1.SmartFake
+    implements _i2.GetPopularTvSeries {
+  _FakeGetPopularTvSeries_0(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
 /// A class which mocks [PopularTvSeriesNotifier].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockPopularTvSeriesNotifier extends _i1.Mock
-    implements _i2.PopularTvSeriesNotifier {
+    implements _i3.PopularTvSeriesNotifier {
   MockPopularTvSeriesNotifier() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i3.RequestState get state => (super.noSuchMethod(
-        Invocation.getter(#state),
-        returnValue: _i3.RequestState.Empty,
-      ) as _i3.RequestState);
+  _i2.GetPopularTvSeries get getPopularTvSeries => (super.noSuchMethod(
+        Invocation.getter(#getPopularTvSeries),
+        returnValue: _FakeGetPopularTvSeries_0(
+          this,
+          Invocation.getter(#getPopularTvSeries),
+        ),
+      ) as _i2.GetPopularTvSeries);
 
   @override
-  List<_i4.TvSeries> get tvSeries => (super.noSuchMethod(
+  _i4.RequestState get state => (super.noSuchMethod(
+        Invocation.getter(#state),
+        returnValue: _i4.RequestState.Empty,
+      ) as _i4.RequestState);
+
+  @override
+  List<_i5.TvSeries> get tvSeries => (super.noSuchMethod(
         Invocation.getter(#tvSeries),
-        returnValue: <_i4.TvSeries>[],
-      ) as List<_i4.TvSeries>);
+        returnValue: <_i5.TvSeries>[],
+      ) as List<_i5.TvSeries>);
 
   @override
   String get message => (super.noSuchMethod(
         Invocation.getter(#message),
-        returnValue: _i5.dummyValue<String>(
+        returnValue: _i6.dummyValue<String>(
           this,
           Invocation.getter(#message),
         ),
@@ -63,7 +84,16 @@ class MockPopularTvSeriesNotifier extends _i1.Mock
       ) as bool);
 
   @override
-  void addListener(_i6.VoidCallback? listener) => super.noSuchMethod(
+  void fetchPopularTvSeries() => super.noSuchMethod(
+        Invocation.method(
+          #fetchPopularTvSeries,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void addListener(_i7.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #addListener,
           [listener],
@@ -72,7 +102,7 @@ class MockPopularTvSeriesNotifier extends _i1.Mock
       );
 
   @override
-  void removeListener(_i6.VoidCallback? listener) => super.noSuchMethod(
+  void removeListener(_i7.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #removeListener,
           [listener],
