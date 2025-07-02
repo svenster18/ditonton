@@ -52,6 +52,15 @@ class DatabaseHelper {
         category TEXT
       );
     ''');
+    await db.execute('''
+      CREATE TABLE  $_tblTvSeriesCache (
+        id INTEGER PRIMARY KEY,
+        name TEXT,
+        overview TEXT,
+        posterPath TEXT,
+        category TEXT
+      );
+    ''');
   }
 
   Future<void> insertCacheTransaction(
@@ -73,7 +82,7 @@ class DatabaseHelper {
       for (final tvSeries in tvSeriesList) {
         final tvSeriesJson = tvSeries.toJson();
         tvSeriesJson['category'] = category;
-        txn.insert(_tblCache, tvSeriesJson);
+        txn.insert(_tblTvSeriesCache, tvSeriesJson);
       }
     });
   }
