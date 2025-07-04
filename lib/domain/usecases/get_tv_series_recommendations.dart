@@ -2,9 +2,14 @@ import 'package:dartz/dartz.dart';
 
 import '../../common/failure.dart';
 import '../entities/tv_series.dart';
+import '../repositories/tv_series_repository.dart';
 
 class GetTvSeriesRecommendations {
-  Future<Either<Failure, List<TvSeries>>> execute(int id) async {
-    return Right(<TvSeries>[]);
+  final TvSeriesRepository repository;
+
+  GetTvSeriesRecommendations(this.repository);
+
+  Future<Either<Failure, List<TvSeries>>> execute(int id) {
+    return repository.getTvSeriesRecommendations(id);
   }
 }
