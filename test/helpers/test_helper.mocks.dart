@@ -528,6 +528,15 @@ class MockTvSeriesRepository extends _i1.Mock
               ),
             )),
           ) as _i6.Future<_i2.Either<_i7.Failure, List<_i16.TvSeries>>>);
+
+  @override
+  _i6.Future<bool> isAddedToWatchlist(int? id) => (super.noSuchMethod(
+        Invocation.method(
+          #isAddedToWatchlist,
+          [id],
+        ),
+        returnValue: _i6.Future<bool>.value(false),
+      ) as _i6.Future<bool>);
 }
 
 /// A class which mocks [TvSeriesRemoteDataSource].
