@@ -1,0 +1,3 @@
+class RemoveTvSeriesWatchlist {
+  execute() {}
+}
