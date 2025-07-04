@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:ditonton/common/exception.dart';
 import 'package:http/http.dart' as http;
 
+import '../models/tv_series_detail_response.dart';
 import '../models/tv_series_model.dart';
 import '../models/tv_series_response.dart';
 
@@ -10,6 +11,8 @@ abstract class TvSeriesRemoteDataSource {
   Future<List<TvSeriesModel>> getOnTheAirTvSeries();
   Future<List<TvSeriesModel>> getPopularTvSeries();
   Future<List<TvSeriesModel>> getTopRatedTvSeries();
+  Future<TvSeriesDetailResponse> getTvSeriesDetail(int id);
+  Future<List<TvSeriesModel>> getTvSeriesRecommendations(int id);
 }
 
 class TvSeriesRemoteDataSourceImpl implements TvSeriesRemoteDataSource {
@@ -49,5 +52,17 @@ class TvSeriesRemoteDataSourceImpl implements TvSeriesRemoteDataSource {
     } else {
       throw ServerException();
     }
+  }
+
+  @override
+  Future<TvSeriesDetailResponse> getTvSeriesDetail(int id) {
+    // TODO: implement getTvSeriesDetail
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<List<TvSeriesModel>> getTvSeriesRecommendations(int id) {
+    // TODO: implement getTvSeriesRecommendations
+    throw UnimplementedError();
   }
 }
