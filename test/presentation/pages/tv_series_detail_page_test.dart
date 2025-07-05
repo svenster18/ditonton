@@ -21,14 +21,16 @@ void main() {
 
   Widget _makeTestableWidget(Widget body) {
     return ChangeNotifierProvider<TvSeriesDetailNotifier>.value(
-      value:mockNotifier,
-        child:  MaterialApp(
-          home: body,
-        ),
+      value: mockNotifier,
+      child: MaterialApp(
+        home: body,
+      ),
     );
   }
 
-  testWidgets('Watchlist button should display add icon when tv series not added to watchlist', (WidgetTester tester) async {
+  testWidgets(
+      'Watchlist button should display add icon when tv series not added to watchlist',
+      (WidgetTester tester) async {
     when(mockNotifier.tvSeriesState).thenReturn(RequestState.Loaded);
     when(mockNotifier.tvSeries).thenReturn(testTvSeriesDetail);
     when(mockNotifier.recommendationState).thenReturn(RequestState.Loaded);
@@ -42,7 +44,9 @@ void main() {
     expect(watchListButtonIcon, findsOneWidget);
   });
 
-  testWidgets('Watchlist button should display check icon when tv series is added to watchlist', (WidgetTester tester) async {
+  testWidgets(
+      'Watchlist button should display check icon when tv series is added to watchlist',
+      (WidgetTester tester) async {
     when(mockNotifier.tvSeriesState).thenReturn(RequestState.Loaded);
     when(mockNotifier.tvSeries).thenReturn(testTvSeriesDetail);
     when(mockNotifier.recommendationState).thenReturn(RequestState.Loaded);
@@ -56,7 +60,9 @@ void main() {
     expect(watchListButtonIcon, findsOneWidget);
   });
 
-  testWidgets('Watchlist button should display Snackbar when added to watchlist', (WidgetTester tester) async {
+  testWidgets(
+      'Watchlist button should display Snackbar when added to watchlist',
+      (WidgetTester tester) async {
     when(mockNotifier.tvSeriesState).thenReturn(RequestState.Loaded);
     when(mockNotifier.tvSeries).thenReturn(testTvSeriesDetail);
     when(mockNotifier.recommendationState).thenReturn(RequestState.Loaded);
@@ -77,7 +83,9 @@ void main() {
     expect(find.text('Added to Watchlist'), findsOneWidget);
   });
 
-  testWidgets('Watchlist button should display AlertDialog when add to watchlist failed', (WidgetTester tester) async {
+  testWidgets(
+      'Watchlist button should display AlertDialog when add to watchlist failed',
+      (WidgetTester tester) async {
     when(mockNotifier.tvSeriesState).thenReturn(RequestState.Loaded);
     when(mockNotifier.tvSeries).thenReturn(testTvSeriesDetail);
     when(mockNotifier.recommendationState).thenReturn(RequestState.Loaded);

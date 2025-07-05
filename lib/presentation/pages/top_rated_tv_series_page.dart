@@ -26,28 +26,25 @@ class _TopRatedTvSeriesPageState extends State<TopRatedTvSeriesPage> {
       appBar: AppBar(
         title: Text('Top Rated Tv Series'),
       ),
-      body: Center(
-        child: Consumer<TopRatedTvSeriesNotifier>(
-          builder: (context, data, child) {
-            if (data.state == RequestState.Loading) {
-              return CircularProgressIndicator();
-            } else if (data.state == RequestState.Loaded) {
-              return ListView.builder(
-                itemBuilder: (context, index) {
-                  final tvSeries = data.tvSeries[index];
-                  return TvSeriesCard(tvSeries);
-                },
-                itemCount: data.tvSeries.length,
-              );
-            } else {
-              return Center(
-                key: Key('error_message'),
-                child: Text(data.message),
-              );
-            }
-          }
-        )
-      ),
+      body: Center(child:
+          Consumer<TopRatedTvSeriesNotifier>(builder: (context, data, child) {
+        if (data.state == RequestState.Loading) {
+          return CircularProgressIndicator();
+        } else if (data.state == RequestState.Loaded) {
+          return ListView.builder(
+            itemBuilder: (context, index) {
+              final tvSeries = data.tvSeries[index];
+              return TvSeriesCard(tvSeries);
+            },
+            itemCount: data.tvSeries.length,
+          );
+        } else {
+          return Center(
+            key: Key('error_message'),
+            child: Text(data.message),
+          );
+        }
+      })),
     );
   }
 }

@@ -19,10 +19,11 @@ void main() {
   setUp(() {
     listenerCallCount = 0;
     mockGetTopRatedTvSeries = MockGetTopRatedTvSeries();
-    notifier = TopRatedTvSeriesNotifier(getTopRatedTvSeries: mockGetTopRatedTvSeries)
-      ..addListener(() {
-        listenerCallCount++;
-      });
+    notifier =
+        TopRatedTvSeriesNotifier(getTopRatedTvSeries: mockGetTopRatedTvSeries)
+          ..addListener(() {
+            listenerCallCount++;
+          });
   });
 
   final tTvSeries = TvSeries(
@@ -54,7 +55,8 @@ void main() {
     expect(listenerCallCount, 1);
   });
 
-  test('should change tv series data when data is gotten successfully', () async {
+  test('should change tv series data when data is gotten successfully',
+      () async {
     // arrange
     when(mockGetTopRatedTvSeries.execute())
         .thenAnswer((_) async => Right(tTvSeriesList));

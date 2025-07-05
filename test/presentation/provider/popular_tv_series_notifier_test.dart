@@ -53,7 +53,8 @@ void main() {
     expect(notifier.state, RequestState.Loading);
   });
 
-  test('should change tv series data when data is gotten successfully', () async {
+  test('should change tv series data when data is gotten successfully',
+      () async {
     // arrange
     when(mockGetPopularTvSeries.execute())
         .thenAnswer((_) async => Right(tTvSeriesList));

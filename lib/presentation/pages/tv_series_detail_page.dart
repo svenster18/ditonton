@@ -33,7 +33,8 @@ class _TvSeriesDetailPageState extends State<TvSeriesDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Consumer<TvSeriesDetailNotifier>(builder: (context, provider, child) {
+      body:
+          Consumer<TvSeriesDetailNotifier>(builder: (context, provider, child) {
         if (provider.tvSeriesState == RequestState.Loading) {
           return Center(
             child: CircularProgressIndicator(),
@@ -156,13 +157,13 @@ class DetailContent extends StatelessWidget {
                             Row(
                               children: [
                                 RatingBarIndicator(
-                                    rating: tvSeries.voteAverage / 2,
-                                    itemCount: 5,
-                                    itemBuilder: (context, index) => Icon(
-                                          Icons.star,
-                                          color: kMikadoYellow,
-                                        ),
-                                    itemSize: 24,
+                                  rating: tvSeries.voteAverage / 2,
+                                  itemCount: 5,
+                                  itemBuilder: (context, index) => Icon(
+                                    Icons.star,
+                                    color: kMikadoYellow,
+                                  ),
+                                  itemSize: 24,
                                 ),
                                 Text('${tvSeries.voteAverage}')
                               ],

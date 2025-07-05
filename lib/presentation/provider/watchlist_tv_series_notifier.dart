@@ -37,5 +37,4 @@ class WatchlistTvSeriesNotifier extends ChangeNotifier {
       },
     );
   }
-  
 }

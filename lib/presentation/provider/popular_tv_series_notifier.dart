@@ -6,7 +6,7 @@ import '../../domain/usecases/get_popular_tv_series.dart';
 
 class PopularTvSeriesNotifier extends ChangeNotifier {
   final GetPopularTvSeries getPopularTvSeries;
-  
+
   PopularTvSeriesNotifier(this.getPopularTvSeries);
 
   RequestState _state = RequestState.Empty;

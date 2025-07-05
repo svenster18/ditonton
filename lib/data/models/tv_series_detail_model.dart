@@ -63,7 +63,8 @@ class TvSeriesDetailResponse extends Equatable {
   @JsonKey(name: "vote_count")
   final int voteCount;
 
-  factory TvSeriesDetailResponse.fromJson(Map<String, dynamic> json) => _$TvSeriesDetailResponseFromJson(json);
+  factory TvSeriesDetailResponse.fromJson(Map<String, dynamic> json) =>
+      _$TvSeriesDetailResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$TvSeriesDetailResponseToJson(this);
 
@@ -85,22 +86,22 @@ class TvSeriesDetailResponse extends Equatable {
 
   @override
   List<Object?> get props => [
-    adult,
-    backdropPath,
-    genres,
-    homepage,
-    id,
-    originCountry,
-    originalLanguage,
-    originalName,
-    overview,
-    popularity,
-    posterPath,
-    firstAirDate,
-    status,
-    tagline,
-    name,
-    voteAverage,
-    voteCount,
-  ];
+        adult,
+        backdropPath,
+        genres,
+        homepage,
+        id,
+        originCountry,
+        originalLanguage,
+        originalName,
+        overview,
+        popularity,
+        posterPath,
+        firstAirDate,
+        status,
+        tagline,
+        name,
+        voteAverage,
+        voteCount,
+      ];
 }

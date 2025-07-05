@@ -107,7 +107,9 @@ void main() {
       expect(listenerCallCount, 3);
     });
 
-    test('should change recommendation tv series when data is gotten successfully',() async {
+    test(
+        'should change recommendation tv series when data is gotten successfully',
+        () async {
       // arrange
       _arrangeUsecase();
       // act
@@ -129,7 +131,8 @@ void main() {
       expect(provider.tvSeriesRecommendations, tTvSeriesList);
     });
 
-    test('should update recommendation state when data is gotten successfully', () async {
+    test('should update recommendation state when data is gotten successfully',
+        () async {
       // arrange
       _arrangeUsecase();
       // act
@@ -186,7 +189,8 @@ void main() {
         verify(mockRemoveTvSeriesWatchlist.execute(testTvSeriesDetail));
       });
 
-      test('should update watchlist status when add watchlist success', () async {
+      test('should update watchlist status when add watchlist success',
+          () async {
         // arrange
         when(mockSaveTvSeriesWatchlist.execute(testTvSeriesDetail))
             .thenAnswer((_) async => Right('Added to Watchlist'));
@@ -200,7 +204,8 @@ void main() {
         expect(listenerCallCount, 1);
       });
 
-      test('should update watchlist message when add watchlist failed', () async {
+      test('should update watchlist message when add watchlist failed',
+          () async {
         // arrange
         when(mockSaveTvSeriesWatchlist.execute(testTvSeriesDetail))
             .thenAnswer((_) async => Left(DatabaseFailure('Failed')));
