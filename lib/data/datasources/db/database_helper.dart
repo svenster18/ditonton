@@ -141,6 +141,11 @@ class DatabaseHelper {
     return await db!.insert(_tblWatchlist, movie.toJson());
   }
 
+  Future<int> insertWatchlistTvSeries(TvSeriesTable tvSeries) async {
+    final db = await database;
+    return await db!.insert(_tblWatchlistTvSeries, tvSeries.toJson());
+  }
+
   Future<int> removeWatchlist(MovieTable movie) async {
     final db = await database;
     return await db!.delete(
@@ -150,10 +155,34 @@ class DatabaseHelper {
     );
   }
 
+  Future<int> removeWatchlistTvSeries(TvSeriesTable tvSeries) async {
+    final db = await database;
+    return await db!.delete(
+      _tblWatchlistTvSeries,
+      where: 'id = ?',
+      whereArgs: [tvSeries.id],
+    );
+  }
+
   Future<Map<String, dynamic>?> getMovieById(int id) async {
     final db = await database;
     final results = await db!.query(
       _tblWatchlist,
+      where: 'id = ?',
+      whereArgs: [id],
+    );
+
+    if (results.isNotEmpty) {
+      return results.first;
+    } else {
+      return null;
+    }
+  }
+
+  Future<Map<String, dynamic>?> getTvSeriesById(int id) async {
+    final db = await database;
+    final results = await db!.query(
+      _tblWatchlistTvSeries,
       where: 'id = ?',
       whereArgs: [id],
     );

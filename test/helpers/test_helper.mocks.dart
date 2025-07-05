@@ -891,6 +891,16 @@ class MockDatabaseHelper extends _i1.Mock implements _i23.DatabaseHelper {
       ) as _i7.Future<int>);
 
   @override
+  _i7.Future<int> insertWatchlistTvSeries(_i22.TvSeriesTable? tvSeries) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #insertWatchlistTvSeries,
+          [tvSeries],
+        ),
+        returnValue: _i7.Future<int>.value(0),
+      ) as _i7.Future<int>);
+
+  @override
   _i7.Future<int> removeWatchlist(_i14.MovieTable? movie) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -901,10 +911,30 @@ class MockDatabaseHelper extends _i1.Mock implements _i23.DatabaseHelper {
       ) as _i7.Future<int>);
 
   @override
+  _i7.Future<int> removeWatchlistTvSeries(_i22.TvSeriesTable? tvSeries) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #removeWatchlistTvSeries,
+          [tvSeries],
+        ),
+        returnValue: _i7.Future<int>.value(0),
+      ) as _i7.Future<int>);
+
+  @override
   _i7.Future<Map<String, dynamic>?> getMovieById(int? id) =>
       (super.noSuchMethod(
         Invocation.method(
           #getMovieById,
+          [id],
+        ),
+        returnValue: _i7.Future<Map<String, dynamic>?>.value(),
+      ) as _i7.Future<Map<String, dynamic>?>);
+
+  @override
+  _i7.Future<Map<String, dynamic>?> getTvSeriesById(int? id) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getTvSeriesById,
           [id],
         ),
         returnValue: _i7.Future<Map<String, dynamic>?>.value(),
