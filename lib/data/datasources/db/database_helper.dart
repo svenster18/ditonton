@@ -23,6 +23,7 @@ class DatabaseHelper {
   }
 
   static const String _tblWatchlist = 'watchlist';
+  static const String _tblWatchlistTvSeries = 'watchlist_tv_series';
   static const String _tblCache = 'cache';
   static const String _tblTvSeriesCache = 'tv_series_cache';
 
@@ -39,6 +40,14 @@ class DatabaseHelper {
       CREATE TABLE  $_tblWatchlist (
         id INTEGER PRIMARY KEY,
         title TEXT,
+        overview TEXT,
+        posterPath TEXT
+      );
+    ''');
+    await db.execute('''
+      CREATE TABLE  $_tblWatchlistTvSeries (
+        id INTEGER PRIMARY KEY,
+        name TEXT,
         overview TEXT,
         posterPath TEXT
       );
@@ -112,6 +121,15 @@ class DatabaseHelper {
   Future<int> clearCache(String category) async {
     final db = await database;
     return await db!.delete(
+      _tblCache,
+      where: 'category = ?',
+      whereArgs: [category],
+    );
+  }
+
+  Future<int> clearTvSeriesCache(String category) async {
+    final db = await database;
+    return await db!.delete(
       _tblTvSeriesCache,
       where: 'category = ?',
       whereArgs: [category],
@@ -150,6 +168,13 @@ class DatabaseHelper {
   Future<List<Map<String, dynamic>>> getWatchlistMovies() async {
     final db = await database;
     final List<Map<String, dynamic>> results = await db!.query(_tblWatchlist);
+
+    return results;
+  }
+
+  Future<List<Map<String, dynamic>>> getWatchlistTvSeries() async {
+    final db = await database;
+    final List<Map<String, dynamic>> results = await db!.query(_tblWatchlistTvSeries);
 
     return results;
   }

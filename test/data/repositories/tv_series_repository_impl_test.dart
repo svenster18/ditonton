@@ -372,4 +372,17 @@ void main() {
       expect(result, Left(ConnectionFailure('Failed to connect to the network')));
     });
   });
+
+  group('get watchlist tv series', () {
+    test('should return list of Tv Series', () async {
+      // arrange
+      when(mockLocalDataSource.getWatchlistTvSeries())
+          .thenAnswer((_) async => [testTvSeriesTable]);
+      // act
+      final result = await repository.getWatchlistTvSeries();
+      // assert
+      final resultList = result.getOrElse(() => []);
+      expect(resultList, [testWatchlistTvSeries]);
+    });
+  });
 }

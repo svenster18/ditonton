@@ -7,7 +7,7 @@ import '../../common/state_enum.dart';
 import '../../common/utils.dart';
 
 class WatchlistTvSeriesPage  extends StatefulWidget {
-  static const ROUTE_NAME = '/watchlist-movie';
+  static const ROUTE_NAME = '/watchlist-tv-series';
 
   @override
   _WatchlistTvSeriesPageState createState() => _WatchlistTvSeriesPageState();

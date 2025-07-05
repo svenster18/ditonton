@@ -104,11 +104,21 @@ final testMovieTable = MovieTable(
   overview: 'overview',
 );
 
+final testTvSeriesTable = TvSeriesTable(
+    id: 1, name: 'name', posterPath: 'posterPath', overview: 'overview');
+
 final testMovieMap = {
   'id': 1,
   'overview': 'overview',
   'posterPath': 'posterPath',
   'title': 'title',
+};
+
+final testTvSeriesMap = {
+  'id': 1,
+  'overview': 'overview',
+  'posterPath': 'posterPath',
+  'name': 'name',
 };
 
 final testTvSeriesDetail = TvSeriesDetail(

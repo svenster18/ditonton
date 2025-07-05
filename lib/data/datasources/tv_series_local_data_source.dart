@@ -6,6 +6,7 @@ import 'db/database_helper.dart';
 abstract class TvSeriesLocalDataSource {
   Future<void> cacheOnTheAirTvSeries(List<TvSeriesTable> tvSeries);
   Future<List<TvSeriesTable>> getCachedOnTheAirTvSeries();
+  Future<List<TvSeriesTable>> getWatchlistTvSeries();
 }
 
 class TvSeriesLocalDataSourceImpl implements TvSeriesLocalDataSource {
@@ -15,7 +16,7 @@ class TvSeriesLocalDataSourceImpl implements TvSeriesLocalDataSource {
 
   @override
   Future<void> cacheOnTheAirTvSeries(List<TvSeriesTable> tvSeries) async {
-    await databaseHelper.clearCache('on the air');
+    await databaseHelper.clearTvSeriesCache('on the air');
     await databaseHelper.insertTvSeriesCacheTransaction(tvSeries, 'on the air');
   }
 
@@ -27,5 +28,11 @@ class TvSeriesLocalDataSourceImpl implements TvSeriesLocalDataSource {
     } else {
       throw CacheException("Can't get the data :(");
     }
+  }
+
+  @override
+  Future<List<TvSeriesTable>> getWatchlistTvSeries() async {
+    final result = await databaseHelper.getWatchlistTvSeries();
+    return result.map((data) => TvSeriesTable.fromMap(data)).toList();
   }
 }

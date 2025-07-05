@@ -19,12 +19,12 @@ void main() {
   group('cache now playing movies', () {
     test('should call database helper to save data', () async {
       // arrange
-      when(mockDatabaseHelper.clearCache('on the air'))
+      when(mockDatabaseHelper.clearTvSeriesCache('on the air'))
           .thenAnswer((_) async => 1);
       // act
       await dataSource.cacheOnTheAirTvSeries([testTvSeriesCache]);
       // assert
-      verify(mockDatabaseHelper.clearCache('on the air'));
+      verify(mockDatabaseHelper.clearTvSeriesCache('on the air'));
       verify(mockDatabaseHelper
           .insertTvSeriesCacheTransaction([testTvSeriesCache], "on the air"));
     });
@@ -47,6 +47,18 @@ void main() {
       final call = dataSource.getCachedOnTheAirTvSeries();
       // assert
       expect(() => call, throwsA(isA<Exception>()));
+    });
+  });
+
+  group('get watchlist tv series', () {
+    test('should return list of TvSeriesTable from database', () async {
+      // arrange
+      when(mockDatabaseHelper.getWatchlistTvSeries())
+          .thenAnswer((_) async => [testTvSeriesMap]);
+      // act
+      final result = await dataSource.getWatchlistTvSeries();
+      // assert
+      expect(result, [testTvSeriesTable]);
     });
   });
 }
