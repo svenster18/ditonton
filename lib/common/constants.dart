@@ -34,7 +34,7 @@ final kDrawerTheme = DrawerThemeData(
 );
 
 const kColorScheme = ColorScheme(
-  primary: kRichBlack,
+  primary: kMikadoYellow,
   secondary: kPrussianBlue,
   secondaryContainer: kPrussianBlue,
   surface: kRichBlack,

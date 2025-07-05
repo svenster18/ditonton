@@ -70,8 +70,6 @@ class TvSeriesDetailNotifier extends ChangeNotifier {
       _tvSeriesState = RequestState.Loaded;
       notifyListeners();
     });
-
-
   }
 
   bool _isAddedToWatchlist = false;

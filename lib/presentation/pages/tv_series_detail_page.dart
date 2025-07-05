@@ -10,26 +10,46 @@ import '../../common/state_enum.dart';
 import '../../domain/entities/tv_series.dart';
 import '../provider/tv_series_detail_notifier.dart';
 
-class TvSeriesDetailPage extends StatelessWidget {
+class TvSeriesDetailPage extends StatefulWidget {
   static const ROUTE_NAME = '/tv-series-detail';
 
   final int id;
-
   TvSeriesDetailPage({required this.id});
+
+  @override
+  State<TvSeriesDetailPage> createState() => _TvSeriesDetailPageState();
+}
+
+class _TvSeriesDetailPageState extends State<TvSeriesDetailPage> {
+  @override
+  void initState() {
+    super.initState();
+    Future.microtask(() {
+      Provider.of<TvSeriesDetailNotifier>(context, listen: false)
+          .fetchTvSeriesDetail(widget.id);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:
-          Consumer<TvSeriesDetailNotifier>(builder: (context, provider, child) {
-        final tvSeries = provider.tvSeries;
-        return SafeArea(
-          child: DetailContent(
-            tvSeries,
-            provider.tvSeriesRecommendations,
-            provider.isAddedToWatchlist,
-          ),
-        );
+      body: Consumer<TvSeriesDetailNotifier>(builder: (context, provider, child) {
+        if (provider.tvSeriesState == RequestState.Loading) {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        } else if (provider.tvSeriesState == RequestState.Loaded) {
+          final tvSeries = provider.tvSeries;
+          return SafeArea(
+            child: DetailContent(
+              tvSeries,
+              provider.tvSeriesRecommendations,
+              provider.isAddedToWatchlist,
+            ),
+          );
+        } else {
+          return Text(provider.message);
+        }
       }),
     );
   }
@@ -142,7 +162,9 @@ class DetailContent extends StatelessWidget {
                                           Icons.star,
                                           color: kMikadoYellow,
                                         ),
-                                    itemSize: 2),
+                                    itemSize: 24,
+                                ),
+                                Text('${tvSeries.voteAverage}')
                               ],
                             ),
                             SizedBox(height: 16),
