@@ -25,6 +25,25 @@ final testMovie = Movie(
 
 final testMovieList = [testMovie];
 
+final testTvSeries = TvSeries(
+  backdropPath: '/muth4OYamXf41G2evdrLEg8d3om.jpg',
+  genreIds: [14, 28],
+  id: 557,
+  originCountry: ['originCountry'],
+  originalLanguage: 'originalLanguage',
+  originalName: 'Spider-Man',
+  overview:
+      'After being bitten by a genetically altered spider, nerdy high school student Peter Parker is endowed with amazing powers to become the Amazing superhero known as Spider-Man.',
+  popularity: 60.441,
+  posterPath: '/rweIrveL43TaxUN0akQEaAXL6x0.jpg',
+  firstAirDate: '2002-05-01',
+  name: 'Spider-Man',
+  voteAverage: 7.2,
+  voteCount: 13507,
+);
+
+final testTvSeriesList = [testTvSeries];
+
 final testMovieDetail = MovieDetail(
   adult: false,
   backdropPath: 'backdropPath',

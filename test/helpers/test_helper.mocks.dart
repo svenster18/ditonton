@@ -569,6 +569,60 @@ class MockTvSeriesRepository extends _i1.Mock
           ),
         )),
       ) as _i7.Future<_i2.Either<_i8.Failure, List<_i17.TvSeries>>>);
+
+  @override
+  _i7.Future<_i2.Either<_i8.Failure, String>> saveWatchlist(
+          _i18.TvSeriesDetail? tvSeries) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #saveWatchlist,
+          [tvSeries],
+        ),
+        returnValue: _i7.Future<_i2.Either<_i8.Failure, String>>.value(
+            _FakeEither_0<_i8.Failure, String>(
+          this,
+          Invocation.method(
+            #saveWatchlist,
+            [tvSeries],
+          ),
+        )),
+      ) as _i7.Future<_i2.Either<_i8.Failure, String>>);
+
+  @override
+  _i7.Future<_i2.Either<_i8.Failure, String>> removeWatchlist(
+          _i18.TvSeriesDetail? tvSeries) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #removeWatchlist,
+          [tvSeries],
+        ),
+        returnValue: _i7.Future<_i2.Either<_i8.Failure, String>>.value(
+            _FakeEither_0<_i8.Failure, String>(
+          this,
+          Invocation.method(
+            #removeWatchlist,
+            [tvSeries],
+          ),
+        )),
+      ) as _i7.Future<_i2.Either<_i8.Failure, String>>);
+
+  @override
+  _i7.Future<_i2.Either<_i8.Failure, List<_i17.TvSeries>>>
+      getWatchlistTvSeries() => (super.noSuchMethod(
+            Invocation.method(
+              #getWatchlistTvSeries,
+              [],
+            ),
+            returnValue:
+                _i7.Future<_i2.Either<_i8.Failure, List<_i17.TvSeries>>>.value(
+                    _FakeEither_0<_i8.Failure, List<_i17.TvSeries>>(
+              this,
+              Invocation.method(
+                #getWatchlistTvSeries,
+                [],
+              ),
+            )),
+          ) as _i7.Future<_i2.Either<_i8.Failure, List<_i17.TvSeries>>>);
 }
 
 /// A class which mocks [TvSeriesRemoteDataSource].
