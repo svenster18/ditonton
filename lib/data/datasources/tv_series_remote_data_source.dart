@@ -13,6 +13,7 @@ abstract class TvSeriesRemoteDataSource {
   Future<List<TvSeriesModel>> getTopRatedTvSeries();
   Future<TvSeriesDetailResponse> getTvSeriesDetail(int id);
   Future<List<TvSeriesModel>> getTvSeriesRecommendations(int id);
+  Future<List<TvSeriesModel>> searchTvSeries(String query);
 }
 
 class TvSeriesRemoteDataSourceImpl implements TvSeriesRemoteDataSource {
@@ -72,5 +73,11 @@ class TvSeriesRemoteDataSourceImpl implements TvSeriesRemoteDataSource {
     } else {
       throw ServerException();
     }
+  }
+
+  @override
+  Future<List<TvSeriesModel>> searchTvSeries(String query) {
+    // TODO: implement searchTvSeries
+    throw UnimplementedError();
   }
 }
