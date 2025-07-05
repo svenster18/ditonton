@@ -6,7 +6,6 @@ import '../../domain/entities/tv_series.dart';
 import '../../domain/entities/tv_series_detail.dart';
 import '../../domain/usecases/get_tv_series_detail.dart';
 import '../../domain/usecases/get_tv_series_recommendations.dart';
-import '../../domain/usecases/get_watchlist_status.dart';
 import '../../domain/usecases/remove_tv_series_watchlist.dart';
 import '../../domain/usecases/save_tv_series_watchlist.dart';
 
