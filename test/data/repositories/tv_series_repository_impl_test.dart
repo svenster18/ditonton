@@ -3,7 +3,8 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:ditonton/common/exception.dart';
 import 'package:ditonton/common/failure.dart';
-import 'package:ditonton/data/models/tv_series_detail_response.dart';
+import 'package:ditonton/data/models/genre_model.dart';
+import 'package:ditonton/data/models/tv_series_detail_model.dart';
 import 'package:ditonton/data/models/tv_series_model.dart';
 import 'package:ditonton/data/repositories/tv_series_repository_impl.dart';
 import 'package:ditonton/domain/entities/tv_series.dart';
@@ -238,7 +239,25 @@ void main() {
 
   group('Get Tv Series Detail', () {
     final tId = 1;
-    final tTvSeriesResponse = TvSeriesDetailResponse();
+    final tTvSeriesResponse = TvSeriesDetailResponse(
+      adult: false,
+      backdropPath: 'backdropPath',
+      genres: [GenreModel(id: 1, name: 'Action')],
+      homepage: "https://google.com",
+      id: 1,
+      originCountry: ["originCountry"],
+      originalLanguage: "originalLanguage",
+      originalName: "originalName",
+      overview: 'overview',
+      popularity: 1,
+      posterPath: 'posterPath',
+      firstAirDate: 'firstAirDate',
+      status: 'Status',
+      tagline: 'Tagline',
+      name: 'name',
+      voteAverage: 1,
+      voteCount: 1,
+    );
 
     test(
         'should return Tv Series data when the call to remote data source is successful',

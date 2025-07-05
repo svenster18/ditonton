@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:ditonton/common/exception.dart';
 import 'package:http/http.dart' as http;
 
-import '../models/tv_series_detail_response.dart';
+import '../models/tv_series_detail_model.dart';
 import '../models/tv_series_model.dart';
 import '../models/tv_series_response.dart';
 
@@ -55,14 +55,22 @@ class TvSeriesRemoteDataSourceImpl implements TvSeriesRemoteDataSource {
   }
 
   @override
-  Future<TvSeriesDetailResponse> getTvSeriesDetail(int id) {
-    // TODO: implement getTvSeriesDetail
-    throw UnimplementedError();
+  Future<TvSeriesDetailResponse> getTvSeriesDetail(int id) async {
+    final response = await client.get(Uri.parse('$BASE_URL/tv/$id?$API_KEY'));
+    if (response.statusCode == 200) {
+      return TvSeriesDetailResponse.fromJson(json.decode(response.body));
+    } else {
+      throw ServerException();
+    }
   }
 
   @override
-  Future<List<TvSeriesModel>> getTvSeriesRecommendations(int id) {
-    // TODO: implement getTvSeriesRecommendations
-    throw UnimplementedError();
+  Future<List<TvSeriesModel>> getTvSeriesRecommendations(int id) async {
+    final response = await client.get(Uri.parse('$BASE_URL/tv/$id/recommendations?$API_KEY'));
+    if (response.statusCode == 200) {
+      return TvSeriesResponse.fromJson(json.decode(response.body)).tvSeriesList;
+    } else {
+      throw ServerException();
+    }
   }
 }

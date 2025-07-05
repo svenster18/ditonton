@@ -21,7 +21,7 @@ import 'package:ditonton/data/datasources/tv_series_remote_data_source.dart'
 import 'package:ditonton/data/models/movie_detail_model.dart' as _i3;
 import 'package:ditonton/data/models/movie_model.dart' as _i12;
 import 'package:ditonton/data/models/movie_table.dart' as _i14;
-import 'package:ditonton/data/models/tv_series_detail_response.dart' as _i4;
+import 'package:ditonton/data/models/tv_series_detail_model.dart' as _i4;
 import 'package:ditonton/data/models/tv_series_model.dart' as _i20;
 import 'package:ditonton/data/models/tv_series_table.dart' as _i22;
 import 'package:ditonton/domain/entities/movie.dart' as _i9;
