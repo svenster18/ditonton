@@ -52,7 +52,7 @@ class _HomeTvSeriesPageState extends State<HomeTvSeriesPage> {
               leading: Icon(Icons.movie),
               title: Text('Movies'),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.pushNamed(context, '/home');
               },
             ),
             ListTile(
@@ -80,7 +80,7 @@ class _HomeTvSeriesPageState extends State<HomeTvSeriesPage> {
         ),
       ),
       appBar: AppBar(
-        title: Text('Ditonton'),
+        title: Text('Tv Series'),
         actions: [
           IconButton(
             onPressed: () {
