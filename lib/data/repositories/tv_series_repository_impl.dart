@@ -92,9 +92,9 @@ class TvSeriesRepositoryImpl implements TvSeriesRepository {
   }
 
   @override
-  Future<bool> isAddedToWatchlist(int id) {
-    // TODO: implement isAddedToWatchlist
-    throw UnimplementedError();
+  Future<bool> isAddedToWatchlist(int id) async {
+    final result = await localDataSource.getTvSeriesById(id);
+    return result != null;
   }
 
   @override
@@ -114,5 +114,27 @@ class TvSeriesRepositoryImpl implements TvSeriesRepository {
   Future<Either<Failure, List<TvSeries>>> getWatchlistTvSeries() async {
     final result = await localDataSource.getWatchlistTvSeries();
     return Right(result.map((data) => data.toEntity()).toList());
+  }
+
+  @override
+  Future<Either<Failure, String>> saveWatchlist(TvSeriesDetail tvSeries) async {
+    try {
+      final result = await localDataSource.insertWatchlist(TvSeriesTable.fromEntity(tvSeries));
+      return Right(result);
+    } on DatabaseException catch (e) {
+      return Left(DatabaseFailure(e.message));
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  @override
+  Future<Either<Failure, String>> removeWatchlist(TvSeriesDetail tvSeries) async {
+    try {
+      final result = await localDataSource.removeWatchlist(TvSeriesTable.fromEntity(tvSeries));
+      return Right(result);
+    } on DatabaseException catch (e) {
+      return Left(DatabaseFailure(e.message));
+    }
   }
 }

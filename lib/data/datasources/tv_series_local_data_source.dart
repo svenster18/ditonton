@@ -4,9 +4,12 @@ import '../../common/exception.dart';
 import 'db/database_helper.dart';
 
 abstract class TvSeriesLocalDataSource {
+  Future<String> insertWatchlist(TvSeriesTable tvSeries);
+  Future<String> removeWatchlist(TvSeriesTable tvSeries);
+  Future<TvSeriesTable?> getTvSeriesById(int id);
+  Future<List<TvSeriesTable>> getWatchlistTvSeries();
   Future<void> cacheOnTheAirTvSeries(List<TvSeriesTable> tvSeries);
   Future<List<TvSeriesTable>> getCachedOnTheAirTvSeries();
-  Future<List<TvSeriesTable>> getWatchlistTvSeries();
 }
 
 class TvSeriesLocalDataSourceImpl implements TvSeriesLocalDataSource {
@@ -34,5 +37,23 @@ class TvSeriesLocalDataSourceImpl implements TvSeriesLocalDataSource {
   Future<List<TvSeriesTable>> getWatchlistTvSeries() async {
     final result = await databaseHelper.getWatchlistTvSeries();
     return result.map((data) => TvSeriesTable.fromMap(data)).toList();
+  }
+
+  @override
+  Future<TvSeriesTable?> getTvSeriesById(int id) {
+    // TODO: implement getTvSeriesById
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<String> insertWatchlist(TvSeriesTable tvSeries) {
+    // TODO: implement insertWatchlist
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<String> removeWatchlist(TvSeriesTable tvSeries) {
+    // TODO: implement removeWatchlist
+    throw UnimplementedError();
   }
 }

@@ -717,6 +717,59 @@ class MockTvSeriesLocalDataSource extends _i1.Mock
   }
 
   @override
+  _i7.Future<String> insertWatchlist(_i22.TvSeriesTable? tvSeries) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #insertWatchlist,
+          [tvSeries],
+        ),
+        returnValue: _i7.Future<String>.value(_i15.dummyValue<String>(
+          this,
+          Invocation.method(
+            #insertWatchlist,
+            [tvSeries],
+          ),
+        )),
+      ) as _i7.Future<String>);
+
+  @override
+  _i7.Future<String> removeWatchlist(_i22.TvSeriesTable? tvSeries) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #removeWatchlist,
+          [tvSeries],
+        ),
+        returnValue: _i7.Future<String>.value(_i15.dummyValue<String>(
+          this,
+          Invocation.method(
+            #removeWatchlist,
+            [tvSeries],
+          ),
+        )),
+      ) as _i7.Future<String>);
+
+  @override
+  _i7.Future<_i22.TvSeriesTable?> getTvSeriesById(int? id) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getTvSeriesById,
+          [id],
+        ),
+        returnValue: _i7.Future<_i22.TvSeriesTable?>.value(),
+      ) as _i7.Future<_i22.TvSeriesTable?>);
+
+  @override
+  _i7.Future<List<_i22.TvSeriesTable>> getWatchlistTvSeries() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getWatchlistTvSeries,
+          [],
+        ),
+        returnValue:
+            _i7.Future<List<_i22.TvSeriesTable>>.value(<_i22.TvSeriesTable>[]),
+      ) as _i7.Future<List<_i22.TvSeriesTable>>);
+
+  @override
   _i7.Future<void> cacheOnTheAirTvSeries(List<_i22.TvSeriesTable>? tvSeries) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -732,17 +785,6 @@ class MockTvSeriesLocalDataSource extends _i1.Mock
       (super.noSuchMethod(
         Invocation.method(
           #getCachedOnTheAirTvSeries,
-          [],
-        ),
-        returnValue:
-            _i7.Future<List<_i22.TvSeriesTable>>.value(<_i22.TvSeriesTable>[]),
-      ) as _i7.Future<List<_i22.TvSeriesTable>>);
-
-  @override
-  _i7.Future<List<_i22.TvSeriesTable>> getWatchlistTvSeries() =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #getWatchlistTvSeries,
           [],
         ),
         returnValue:

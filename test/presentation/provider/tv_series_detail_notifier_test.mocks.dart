@@ -186,11 +186,22 @@ class MockSaveTvSeriesWatchlist extends _i1.Mock
       ) as _i2.TvSeriesRepository);
 
   @override
-  dynamic execute(_i8.TvSeriesDetail? tvSeries) =>
-      super.noSuchMethod(Invocation.method(
-        #execute,
-        [tvSeries],
-      ));
+  _i6.Future<_i3.Either<_i7.Failure, String>> execute(
+          _i8.TvSeriesDetail? tvSeries) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #execute,
+          [tvSeries],
+        ),
+        returnValue: _i6.Future<_i3.Either<_i7.Failure, String>>.value(
+            _FakeEither_1<_i7.Failure, String>(
+          this,
+          Invocation.method(
+            #execute,
+            [tvSeries],
+          ),
+        )),
+      ) as _i6.Future<_i3.Either<_i7.Failure, String>>);
 }
 
 /// A class which mocks [RemoveTvSeriesWatchlist].
@@ -203,9 +214,29 @@ class MockRemoveTvSeriesWatchlist extends _i1.Mock
   }
 
   @override
-  dynamic execute(_i8.TvSeriesDetail? tvSeries) =>
-      super.noSuchMethod(Invocation.method(
-        #execute,
-        [tvSeries],
-      ));
+  _i2.TvSeriesRepository get repository => (super.noSuchMethod(
+        Invocation.getter(#repository),
+        returnValue: _FakeTvSeriesRepository_0(
+          this,
+          Invocation.getter(#repository),
+        ),
+      ) as _i2.TvSeriesRepository);
+
+  @override
+  _i6.Future<_i3.Either<_i7.Failure, String>> execute(
+          _i8.TvSeriesDetail? tvSeries) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #execute,
+          [tvSeries],
+        ),
+        returnValue: _i6.Future<_i3.Either<_i7.Failure, String>>.value(
+            _FakeEither_1<_i7.Failure, String>(
+          this,
+          Invocation.method(
+            #execute,
+            [tvSeries],
+          ),
+        )),
+      ) as _i6.Future<_i3.Either<_i7.Failure, String>>);
 }
