@@ -175,6 +175,13 @@ class MockSaveTvSeriesWatchlist extends _i1.Mock
   MockSaveTvSeriesWatchlist() {
     _i1.throwOnMissingStub(this);
   }
+
+  @override
+  dynamic execute(_i8.TvSeriesDetail? tvSeries) =>
+      super.noSuchMethod(Invocation.method(
+        #execute,
+        [tvSeries],
+      ));
 }
 
 /// A class which mocks [RemoveTvSeriesWatchlist].
@@ -185,4 +192,11 @@ class MockRemoveTvSeriesWatchlist extends _i1.Mock
   MockRemoveTvSeriesWatchlist() {
     _i1.throwOnMissingStub(this);
   }
+
+  @override
+  dynamic execute(_i8.TvSeriesDetail? tvSeries) =>
+      super.noSuchMethod(Invocation.method(
+        #execute,
+        [tvSeries],
+      ));
 }

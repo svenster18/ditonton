@@ -247,6 +247,16 @@ class MockTvSeriesDetailNotifier extends _i1.Mock
       ) as _i12.Future<void>);
 
   @override
+  _i12.Future<void> loadWatchlistStatus(int? id) => (super.noSuchMethod(
+        Invocation.method(
+          #loadWatchlistStatus,
+          [id],
+        ),
+        returnValue: _i12.Future<void>.value(),
+        returnValueForMissingStub: _i12.Future<void>.value(),
+      ) as _i12.Future<void>);
+
+  @override
   void addListener(_i13.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #addListener,

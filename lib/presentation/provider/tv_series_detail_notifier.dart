@@ -73,14 +73,43 @@ class TvSeriesDetailNotifier extends ChangeNotifier {
   }
 
   bool _isAddedToWatchlist = false;
-
   bool get isAddedToWatchlist => _isAddedToWatchlist;
 
   String _watchlistMessage = '';
-
   String get watchlistMessage => _watchlistMessage;
 
-  Future<void> addWatchlist(TvSeriesDetail tvSeries) async {}
+  Future<void> addWatchlist(TvSeriesDetail tvSeries) async {
+    final result = await saveTvSeriesWatchlist.execute(tvSeries);
 
-  Future<void> removeFromWatchlist(TvSeriesDetail tvSeries) async {}
+    await result.fold(
+      (failure) async {
+        _watchlistMessage = failure.message;
+      },
+      (successMessage) async {
+        _watchlistMessage = successMessage;
+      },
+    );
+
+    await loadWatchlistStatus(tvSeries.id);
+  }
+
+  Future<void> removeFromWatchlist(TvSeriesDetail tvSeries) async {
+    final result = await removeTvSeriesWatchlist.execute(tvSeries);
+
+    await result.fold(
+      (failure) async {
+        _watchlistMessage = failure.message;
+      },
+      (successMessage) async {
+        _watchlistMessage = successMessage;
+      },
+    );
+    await loadWatchlistStatus(tvSeries.id);
+  }
+
+  Future<void> loadWatchlistStatus(int id) async {
+    final result = await getWatchListStatus.execute(id);
+    _isAddedToWatchlist = result;
+    notifyListeners();
+  }
 }

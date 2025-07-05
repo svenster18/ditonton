@@ -1,3 +1,5 @@
+import '../entities/tv_series_detail.dart';
+
 class SaveTvSeriesWatchlist {
-  execute() {}
+  execute(TvSeriesDetail tvSeries) {}
 }
