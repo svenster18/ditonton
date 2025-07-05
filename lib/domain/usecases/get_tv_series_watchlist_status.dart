@@ -5,7 +5,7 @@ class GetTvSeriesWatchlistStatus {
 
   GetTvSeriesWatchlistStatus(this.repository);
 
-  Future<bool> execute(int i) {
-    return repository.isAddedToWatchlist(i);
+  Future<bool> execute(int id) {
+    return repository.isAddedToWatchlist(id);
   }
 }

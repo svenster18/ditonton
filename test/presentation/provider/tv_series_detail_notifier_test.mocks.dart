@@ -177,6 +177,15 @@ class MockSaveTvSeriesWatchlist extends _i1.Mock
   }
 
   @override
+  _i2.TvSeriesRepository get repository => (super.noSuchMethod(
+        Invocation.getter(#repository),
+        returnValue: _FakeTvSeriesRepository_0(
+          this,
+          Invocation.getter(#repository),
+        ),
+      ) as _i2.TvSeriesRepository);
+
+  @override
   dynamic execute(_i8.TvSeriesDetail? tvSeries) =>
       super.noSuchMethod(Invocation.method(
         #execute,
