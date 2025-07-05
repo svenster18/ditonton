@@ -550,6 +550,25 @@ class MockTvSeriesRepository extends _i1.Mock
         ),
         returnValue: _i7.Future<bool>.value(false),
       ) as _i7.Future<bool>);
+
+  @override
+  _i7.Future<_i2.Either<_i8.Failure, List<_i17.TvSeries>>> searchTvSeries(
+          String? query) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #searchTvSeries,
+          [query],
+        ),
+        returnValue:
+            _i7.Future<_i2.Either<_i8.Failure, List<_i17.TvSeries>>>.value(
+                _FakeEither_0<_i8.Failure, List<_i17.TvSeries>>(
+          this,
+          Invocation.method(
+            #searchTvSeries,
+            [query],
+          ),
+        )),
+      ) as _i7.Future<_i2.Either<_i8.Failure, List<_i17.TvSeries>>>);
 }
 
 /// A class which mocks [TvSeriesRemoteDataSource].

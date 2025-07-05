@@ -3,7 +3,8 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:ditonton/domain/usecases/search_tv_series.dart' as _i2;
+import 'package:ditonton/domain/repositories/tv_series_repository.dart' as _i2;
+import 'package:ditonton/domain/usecases/search_tv_series.dart' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -20,11 +21,37 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
+class _FakeTvSeriesRepository_0 extends _i1.SmartFake
+    implements _i2.TvSeriesRepository {
+  _FakeTvSeriesRepository_0(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
 /// A class which mocks [SearchTvSeries].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockSearchTvSeries extends _i1.Mock implements _i2.SearchTvSeries {
+class MockSearchTvSeries extends _i1.Mock implements _i3.SearchTvSeries {
   MockSearchTvSeries() {
     _i1.throwOnMissingStub(this);
   }
+
+  @override
+  _i2.TvSeriesRepository get repository => (super.noSuchMethod(
+        Invocation.getter(#repository),
+        returnValue: _FakeTvSeriesRepository_0(
+          this,
+          Invocation.getter(#repository),
+        ),
+      ) as _i2.TvSeriesRepository);
+
+  @override
+  dynamic execute(String? query) => super.noSuchMethod(Invocation.method(
+        #execute,
+        [query],
+      ));
 }
