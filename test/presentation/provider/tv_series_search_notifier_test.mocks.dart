@@ -3,8 +3,13 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'dart:async' as _i5;
+
+import 'package:dartz/dartz.dart' as _i3;
+import 'package:ditonton/common/failure.dart' as _i6;
+import 'package:ditonton/domain/entities/tv_series.dart' as _i7;
 import 'package:ditonton/domain/repositories/tv_series_repository.dart' as _i2;
-import 'package:ditonton/domain/usecases/search_tv_series.dart' as _i3;
+import 'package:ditonton/domain/usecases/search_tv_series.dart' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -32,10 +37,20 @@ class _FakeTvSeriesRepository_0 extends _i1.SmartFake
         );
 }
 
+class _FakeEither_1<L, R> extends _i1.SmartFake implements _i3.Either<L, R> {
+  _FakeEither_1(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
 /// A class which mocks [SearchTvSeries].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockSearchTvSeries extends _i1.Mock implements _i3.SearchTvSeries {
+class MockSearchTvSeries extends _i1.Mock implements _i4.SearchTvSeries {
   MockSearchTvSeries() {
     _i1.throwOnMissingStub(this);
   }
@@ -50,8 +65,21 @@ class MockSearchTvSeries extends _i1.Mock implements _i3.SearchTvSeries {
       ) as _i2.TvSeriesRepository);
 
   @override
-  dynamic execute(String? query) => super.noSuchMethod(Invocation.method(
-        #execute,
-        [query],
-      ));
+  _i5.Future<_i3.Either<_i6.Failure, List<_i7.TvSeries>>> execute(
+          String? query) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #execute,
+          [query],
+        ),
+        returnValue:
+            _i5.Future<_i3.Either<_i6.Failure, List<_i7.TvSeries>>>.value(
+                _FakeEither_1<_i6.Failure, List<_i7.TvSeries>>(
+          this,
+          Invocation.method(
+            #execute,
+            [query],
+          ),
+        )),
+      ) as _i5.Future<_i3.Either<_i6.Failure, List<_i7.TvSeries>>>);
 }
