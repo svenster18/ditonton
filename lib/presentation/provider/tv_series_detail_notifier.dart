@@ -1,4 +1,5 @@
 import 'package:ditonton/common/state_enum.dart';
+import 'package:ditonton/domain/usecases/get_tv_series_watchlist_status.dart';
 import 'package:flutter/material.dart';
 
 import '../../domain/entities/tv_series.dart';
@@ -15,7 +16,7 @@ class TvSeriesDetailNotifier extends ChangeNotifier {
 
   final GetTvSeriesDetail getTvSeriesDetail;
   final GetTvSeriesRecommendations getTvSeriesRecommendations;
-  final GetWatchListStatus getWatchListStatus;
+  final GetTvSeriesWatchlistStatus getWatchListStatus;
   final SaveTvSeriesWatchlist saveTvSeriesWatchlist;
   final RemoveTvSeriesWatchlist removeTvSeriesWatchlist;
 
