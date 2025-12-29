@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/domain/entities/movie.dart';
+import 'package:ditonton/presentation/bloc/movie_list_bloc.dart';
 import 'package:ditonton/presentation/pages/about_page.dart';
 import 'package:ditonton/presentation/pages/home_tv_series_page.dart';
 import 'package:ditonton/presentation/pages/movie_detail_page.dart';
@@ -12,6 +13,7 @@ import 'package:ditonton/presentation/provider/movie_list_notifier.dart';
 import 'package:ditonton/common/state_enum.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 
 class HomeMoviePage extends StatefulWidget {
@@ -23,9 +25,9 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
   @override
   void initState() {
     super.initState();
+    context.read<MovieListBloc>().add(OnFetchNowPlayingMovies());
     Future.microtask(
         () => Provider.of<MovieListNotifier>(context, listen: false)
-          ..fetchNowPlayingMovies()
           ..fetchPopularMovies()
           ..fetchTopRatedMovies());
   }
@@ -99,14 +101,15 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
                 'Now Playing',
                 style: kHeading6,
               ),
-              Consumer<MovieListNotifier>(builder: (context, data, child) {
-                final state = data.nowPlayingState;
-                if (state == RequestState.Loading) {
+              BlocBuilder<MovieListBloc, MovieListState>(
+                  builder: (context, state) {
+                if (state is MovieListLoading) {
                   return Center(
                     child: CircularProgressIndicator(),
                   );
-                } else if (state == RequestState.Loaded) {
-                  return MovieList(data.nowPlayingMovies);
+                } else if (state is MovieListHasData) {
+                  final result = state.result;
+                  return MovieList(result);
                 } else {
                   return Text('Failed');
                 }

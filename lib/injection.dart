@@ -23,6 +23,7 @@ import 'package:ditonton/domain/usecases/remove_watchlist.dart';
 import 'package:ditonton/domain/usecases/save_tv_series_watchlist.dart';
 import 'package:ditonton/domain/usecases/save_watchlist.dart';
 import 'package:ditonton/domain/usecases/search_movies.dart';
+import 'package:ditonton/presentation/bloc/movie_list_bloc.dart';
 import 'package:ditonton/presentation/provider/movie_detail_notifier.dart';
 import 'package:ditonton/presentation/provider/movie_list_notifier.dart';
 import 'package:ditonton/presentation/provider/movie_search_notifier.dart';
@@ -35,8 +36,8 @@ import 'package:ditonton/presentation/provider/tv_series_list_notifier.dart';
 import 'package:ditonton/presentation/provider/tv_series_search_notifier.dart';
 import 'package:ditonton/presentation/provider/watchlist_movie_notifier.dart';
 import 'package:ditonton/presentation/provider/watchlist_tv_series_notifier.dart';
-import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
+import 'package:http/http.dart' as http;
 
 import 'data/datasources/tv_series_local_data_source.dart';
 import 'data/datasources/tv_series_remote_data_source.dart';
@@ -48,6 +49,10 @@ import 'domain/usecases/search_tv_series.dart';
 final locator = GetIt.instance;
 
 void init() {
+  // bloc
+  locator.registerFactory(
+    () => MovieListBloc(locator()),
+  );
   // provider
   locator.registerFactory(
     () => MovieListNotifier(
