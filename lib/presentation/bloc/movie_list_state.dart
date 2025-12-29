@@ -34,10 +34,10 @@ class MovieListEmpty extends MovieListState {}
 
 class MovieListLoading extends MovieListState {}
 
-class MovieListStateError extends MovieListState {
+class MovieListError extends MovieListState {
   final String message;
 
-  MovieListStateError(this.message);
+  MovieListError(this.message);
 
   @override
   List<Object> get props => [message];

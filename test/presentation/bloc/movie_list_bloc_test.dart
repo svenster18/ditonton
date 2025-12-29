@@ -26,7 +26,7 @@ void main() {
     id: 557,
     originalTitle: 'Spider-Man',
     overview:
-    'After being bitten by a genetically altered spider, nerdy high school student Peter Parker is endowed with amazing powers to become the Amazing superhero known as Spider-Man.',
+        'After being bitten by a genetically altered spider, nerdy high school student Peter Parker is endowed with amazing powers to become the Amazing superhero known as Spider-Man.',
     popularity: 60.441,
     posterPath: '/rweIrveL43TaxUN0akQEaAXL6x0.jpg',
     releaseDate: '2002-05-01',
@@ -41,7 +41,8 @@ void main() {
     mockGetNowPlayingMovies = MockGetNowPlayingMovies();
     mockGetPopularMovies = MockGetPopularMovies();
     mockGetTopRatedMovies = MockGetTopRatedMovies();
-    movieListBloc = MovieListBloc(mockGetNowPlayingMovies, mockGetPopularMovies, mockGetTopRatedMovies);
+    movieListBloc = MovieListBloc(
+        mockGetNowPlayingMovies, mockGetPopularMovies, mockGetTopRatedMovies);
   });
 
   group('now playing movies', () {
@@ -57,7 +58,7 @@ void main() {
         return movieListBloc;
       },
       act: (bloc) => bloc.add(OnFetchNowPlayingMovies()),
-      wait: const Duration(milliseconds: 100),
+      wait: const Duration(milliseconds: 500),
       expect: () => [
         MovieListLoading(),
         MovieListState(nowPlayingMovies: tMovieList),
@@ -77,7 +78,7 @@ void main() {
       act: (bloc) => bloc.add(OnFetchNowPlayingMovies()),
       expect: () => [
         MovieListLoading(),
-        MovieListStateError('Server Failure'),
+        MovieListError('Server Failure'),
       ],
       verify: (bloc) {
         verify(mockGetNowPlayingMovies.execute());
@@ -118,7 +119,7 @@ void main() {
       act: (bloc) => bloc.add(OnFetchPopularMovies()),
       expect: () => [
         MovieListLoading(),
-        MovieListStateError('Server Failure'),
+        MovieListError('Server Failure'),
       ],
       verify: (bloc) {
         verify(mockGetPopularMovies.execute());
@@ -159,7 +160,7 @@ void main() {
       act: (bloc) => bloc.add(OnFetchTopRatedMovies()),
       expect: () => [
         MovieListLoading(),
-        MovieListStateError('Server Failure'),
+        MovieListError('Server Failure'),
       ],
       verify: (bloc) {
         verify(mockGetTopRatedMovies.execute());

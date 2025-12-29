@@ -1,8 +1,8 @@
 import 'package:ditonton/domain/usecases/get_popular_movies.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import '../../domain/entities/movie.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../domain/entities/movie.dart';
 import '../../domain/usecases/get_now_playing_movies.dart';
 import '../../domain/usecases/get_top_rated_movies.dart';
 
@@ -20,8 +20,8 @@ class MovieListBloc extends Bloc<MovieListEvent, MovieListState> {
      final result = await _getNowPlayingMovies.execute();
      result.fold(
        (failure) {
-         emit(MovieListStateError(failure.message));
-       },
+          emit(MovieListError(failure.message));
+        },
            (movies) {
          emit(state.copyWith(nowPlayingMovies: movies));
        },
@@ -32,8 +32,8 @@ class MovieListBloc extends Bloc<MovieListEvent, MovieListState> {
      final result = await _getPopularMovies.execute();
      result.fold(
        (failure) {
-         emit(MovieListStateError(failure.message));
-       },
+          emit(MovieListError(failure.message));
+        },
        (movies) {
          emit(state.copyWith(popularMovies: movies));
        },
@@ -44,8 +44,8 @@ class MovieListBloc extends Bloc<MovieListEvent, MovieListState> {
      final result = await _getTopRatedMovies.execute();
      result.fold(
        (failure) {
-         emit(MovieListStateError(failure.message));
-         },
+          emit(MovieListError(failure.message));
+        },
            (movies) {
          emit(state.copyWith(topRatedMovies: movies));
        },
