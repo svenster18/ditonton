@@ -8,3 +8,7 @@ abstract class MovieListEvent extends Equatable {
 }
 
 class OnFetchNowPlayingMovies extends MovieListEvent {}
+
+class OnFetchPopularMovies extends MovieListEvent {}
+
+class OnFetchTopRatedMovies extends MovieListEvent {}
