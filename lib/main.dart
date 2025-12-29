@@ -69,9 +69,6 @@ class MyApp extends StatelessWidget {
           create: (_) => di.locator<MovieListBloc>(),
         ),
         ChangeNotifierProvider(
-          create: (_) => di.locator<MovieListNotifier>(),
-        ),
-        ChangeNotifierProvider(
           create: (_) => di.locator<TvSeriesListNotifier>(),
         ),
         ChangeNotifierProvider(

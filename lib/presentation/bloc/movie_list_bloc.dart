@@ -22,8 +22,8 @@ class MovieListBloc extends Bloc<MovieListEvent, MovieListState> {
        (failure) {
          emit(MovieListStateError(failure.message));
        },
-       (result) {
-         emit(MovieListHasData(result));
+           (movies) {
+         emit(state.copyWith(nowPlayingMovies: movies));
        },
      );
    });
@@ -34,8 +34,8 @@ class MovieListBloc extends Bloc<MovieListEvent, MovieListState> {
        (failure) {
          emit(MovieListStateError(failure.message));
        },
-       (result) {
-         emit(MovieListHasData(result));
+       (movies) {
+         emit(state.copyWith(popularMovies: movies));
        },
      );
    });
@@ -46,8 +46,8 @@ class MovieListBloc extends Bloc<MovieListEvent, MovieListState> {
        (failure) {
          emit(MovieListStateError(failure.message));
          },
-       (result) {
-         emit(MovieListHasData(result));
+           (movies) {
+         emit(state.copyWith(topRatedMovies: movies));
        },
      );
    });

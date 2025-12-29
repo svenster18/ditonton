@@ -51,16 +51,13 @@ final locator = GetIt.instance;
 void init() {
   // bloc
   locator.registerFactory(
-    () => MovieListBloc(locator()),
-  );
-  // provider
-  locator.registerFactory(
-    () => MovieListNotifier(
-      getNowPlayingMovies: locator(),
-      getPopularMovies: locator(),
-      getTopRatedMovies: locator(),
+    () => MovieListBloc(
+      locator(),
+      locator(),
+      locator(),
     ),
   );
+  // provider
   locator.registerFactory(
     () => TvSeriesListNotifier(
       getOnTheAirTvSeries: locator(),
