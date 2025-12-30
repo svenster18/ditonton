@@ -16,17 +16,11 @@ import 'movie_detail_bloc_test.mocks.dart';
 void main() {
   late MovieDetailBloc movieDetailBloc;
   late MockGetMovieDetail mockGetMovieDetail;
-  late MockGetWatchListStatus mockGetWatchlistStatus;
-  late MockSaveWatchlist mockSaveWatchlist;
-  late MockRemoveWatchlist mockRemoveWatchlist;
 
   final tId = 1;
 
   setUp(() {
     mockGetMovieDetail = MockGetMovieDetail();
-    mockGetWatchlistStatus = MockGetWatchListStatus();
-    mockSaveWatchlist = MockSaveWatchlist();
-    mockRemoveWatchlist = MockRemoveWatchlist();
     movieDetailBloc = MovieDetailBloc(
       mockGetMovieDetail,
     );
