@@ -11,30 +11,16 @@ final class MovieDetailEmpty extends MovieDetailState {}
 
 final class MovieDetailLoading extends MovieDetailState {}
 
-final class MovieDetailHasData extends MovieDetailState {
+final class MovieDetailLoaded extends MovieDetailState {
   final MovieDetail movie;
 
-  MovieDetailHasData(this.movie);
+  MovieDetailLoaded(this.movie);
 }
 
 final class MovieDetailError extends MovieDetailState {
   final String message;
 
   MovieDetailError(this.message);
-}
-
-final class MovieRecommendationsLoading extends MovieDetailState {}
-
-final class MovieRecommendationsHasData extends MovieDetailState {
-  final List<Movie> recommendations;
-
-  MovieRecommendationsHasData(this.recommendations);
-}
-
-final class MovieRecommendationsError extends MovieDetailState {
-  final String message;
-
-  MovieRecommendationsError(this.message);
 }
 
 final class WatchlistSuccess extends MovieDetailState {

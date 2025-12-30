@@ -1,9 +1,7 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:dartz/dartz.dart';
 import 'package:ditonton/common/failure.dart';
-import 'package:ditonton/domain/entities/movie.dart';
 import 'package:ditonton/domain/usecases/get_movie_detail.dart';
-import 'package:ditonton/domain/usecases/get_movie_recommendations.dart';
 import 'package:ditonton/domain/usecases/get_watchlist_status.dart';
 import 'package:ditonton/domain/usecases/remove_watchlist.dart';
 import 'package:ditonton/domain/usecases/save_watchlist.dart';
@@ -17,7 +15,6 @@ import 'movie_detail_bloc_test.mocks.dart';
 
 @GenerateMocks([
   GetMovieDetail,
-  GetMovieRecommendations,
   GetWatchListStatus,
   SaveWatchlist,
   RemoveWatchlist,
@@ -25,52 +22,28 @@ import 'movie_detail_bloc_test.mocks.dart';
 void main() {
   late MovieDetailBloc movieDetailBloc;
   late MockGetMovieDetail mockGetMovieDetail;
-  late MockGetMovieRecommendations mockGetMovieRecommendations;
   late MockGetWatchListStatus mockGetWatchlistStatus;
   late MockSaveWatchlist mockSaveWatchlist;
   late MockRemoveWatchlist mockRemoveWatchlist;
-  late int listenerCallCount;
 
   final tId = 1;
 
-  final tMovie = Movie(
-    adult: false,
-    backdropPath: 'backdropPath',
-    genreIds: [1, 2, 3],
-    id: 1,
-    originalTitle: 'originalTitle',
-    overview: 'overview',
-    popularity: 1,
-    posterPath: 'posterPath',
-    releaseDate: 'releaseDate',
-    title: 'title',
-    video: false,
-    voteAverage: 1,
-    voteCount: 1,
-  );
-  final tMovies = <Movie>[tMovie];
-
   setUp(() {
-    listenerCallCount = 0;
     mockGetMovieDetail = MockGetMovieDetail();
-    mockGetMovieRecommendations = MockGetMovieRecommendations();
     mockGetWatchlistStatus = MockGetWatchListStatus();
     mockSaveWatchlist = MockSaveWatchlist();
     mockRemoveWatchlist = MockRemoveWatchlist();
     movieDetailBloc = MovieDetailBloc(
       mockGetMovieDetail,
-      mockGetMovieRecommendations,
       mockGetWatchlistStatus,
       mockSaveWatchlist,
       mockRemoveWatchlist,
-    )..add((OnCall(listenerCallCount)));
+    );
   });
 
   void _arrangeUsecase() {
     when(mockGetMovieDetail.execute(tId))
         .thenAnswer((_) async => Right(testMovieDetail));
-    when(mockGetMovieRecommendations.execute(tId))
-        .thenAnswer((_) async => Right(tMovies));
   }
 
   group('Get Movie Detail and Recommendations', () {
@@ -83,11 +56,10 @@ void main() {
         act: (bloc) => bloc.add(OnFetchMovieDetail(tId)),
         verify: (bloc) {
           verify(mockGetMovieDetail.execute(tId));
-          verify(mockGetMovieRecommendations.execute(tId));
         });
 
     blocTest<MovieDetailBloc, MovieDetailState>(
-        'should change movie and recommendations when data is gotten successfully',
+        'should change movie when data is gotten successfully',
         build: () {
           _arrangeUsecase();
           return movieDetailBloc;
@@ -95,9 +67,7 @@ void main() {
         act: (bloc) => bloc.add(OnFetchMovieDetail(tId)),
         expect: () => [
               MovieDetailLoading(),
-              MovieRecommendationsLoading(),
-              MovieRecommendationsHasData(tMovies),
-              MovieDetailHasData(testMovieDetail),
+              MovieDetailLoaded(testMovieDetail),
             ]);
 
     blocTest<MovieDetailBloc, MovieDetailState>(
@@ -105,21 +75,16 @@ void main() {
         build: () {
           when(mockGetMovieDetail.execute(tId))
               .thenAnswer((_) async => Right(testMovieDetail));
-          when(mockGetMovieRecommendations.execute(tId))
-              .thenAnswer((_) async => Left(ServerFailure('Failed')));
           return movieDetailBloc;
         },
         act: (bloc) => bloc.add(OnFetchMovieDetail(tId)),
         wait: const Duration(milliseconds: 500),
         expect: () => <MovieDetailState>[
               MovieDetailLoading(),
-              MovieRecommendationsLoading(),
-              MovieRecommendationsError('Failed'),
-              MovieDetailHasData(testMovieDetail),
+              MovieDetailLoaded(testMovieDetail),
             ],
         verify: (bloc) {
           verify(mockGetMovieDetail.execute(tId));
-          verify(mockGetMovieRecommendations.execute(tId));
         });
   });
 
@@ -219,8 +184,6 @@ void main() {
         build: () {
           when(mockGetMovieDetail.execute(tId))
               .thenAnswer((_) async => Left(ServerFailure('Server Failed')));
-          when(mockGetMovieRecommendations.execute(tId))
-              .thenAnswer((_) async => Right(tMovies));
           return movieDetailBloc;
         },
         act: (bloc) => bloc.add(OnFetchMovieDetail(tId)),
