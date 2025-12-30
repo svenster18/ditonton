@@ -35,9 +35,6 @@ void main() {
     mockRemoveWatchlist = MockRemoveWatchlist();
     movieDetailBloc = MovieDetailBloc(
       mockGetMovieDetail,
-      mockGetWatchlistStatus,
-      mockSaveWatchlist,
-      mockRemoveWatchlist,
     );
   });
 

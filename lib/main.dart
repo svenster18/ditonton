@@ -4,7 +4,10 @@ import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/common/utils.dart';
 import 'package:ditonton/firebase_options.dart';
 import 'package:ditonton/injection.dart' as di;
+import 'package:ditonton/presentation/bloc/movie_detail_bloc.dart';
 import 'package:ditonton/presentation/bloc/movie_list_bloc.dart';
+import 'package:ditonton/presentation/bloc/movie_recommendations_bloc.dart';
+import 'package:ditonton/presentation/bloc/watchlist_status_bloc.dart';
 import 'package:ditonton/presentation/pages/about_page.dart';
 import 'package:ditonton/presentation/pages/home_movie_page.dart';
 import 'package:ditonton/presentation/pages/home_tv_series_page.dart';
@@ -18,7 +21,6 @@ import 'package:ditonton/presentation/pages/top_rated_tv_series_page.dart';
 import 'package:ditonton/presentation/pages/tv_series_detail_page.dart';
 import 'package:ditonton/presentation/pages/watchlist_movies_page.dart';
 import 'package:ditonton/presentation/pages/watchlist_tv_series_page.dart';
-import 'package:ditonton/presentation/provider/movie_detail_notifier.dart';
 import 'package:ditonton/presentation/provider/movie_search_notifier.dart';
 import 'package:ditonton/presentation/provider/popular_movies_notifier.dart';
 import 'package:ditonton/presentation/provider/popular_tv_series_notifier.dart';
@@ -70,8 +72,14 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => di.locator<TvSeriesListNotifier>(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<MovieDetailNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<MovieDetailBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<MovieRecommendationsBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<WatchlistBloc>(),
         ),
         ChangeNotifierProvider(
             create: (_) => di.locator<TvSeriesDetailNotifier>()),

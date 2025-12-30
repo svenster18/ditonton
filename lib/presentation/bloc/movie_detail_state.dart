@@ -22,27 +22,3 @@ final class MovieDetailError extends MovieDetailState {
 
   MovieDetailError(this.message);
 }
-
-final class WatchlistSuccess extends MovieDetailState {
-  final String message;
-
-  WatchlistSuccess(this.message);
-}
-
-final class WatchlistError extends MovieDetailState {
-  final String message;
-
-  WatchlistError(this.message);
-}
-
-final class WatchlistStatusLoaded extends MovieDetailState {
-  final bool isAddedToWatchlist;
-
-  WatchlistStatusLoaded(this.isAddedToWatchlist);
-}
-
-final class CallCountAdded extends MovieDetailState {
-  final int callCount;
-
-  CallCountAdded(this.callCount);
-}
