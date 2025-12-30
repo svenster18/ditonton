@@ -48,5 +48,34 @@ class MovieDetailBloc extends Bloc<MovieDetailEvent, MovieDetailState> {
         },
       );
     });
+
+    on<OnAddWatchlist>((event, emit) async {
+      final result = await _saveWatchlist.execute(event.movie);
+
+      result.fold((failure) async {
+        emit(WatchlistError(failure.message));
+      }, (successMessage) async {
+        emit(WatchlistSuccess(successMessage));
+      });
+    });
+
+    on<OnRemoveWatchlist>((event, emit) async {
+      final result = await _removeWatchlist.execute(event.movie);
+
+      result.fold((failure) async {
+        emit(WatchlistError(failure.message));
+      }, (successMessage) async {
+        emit(WatchlistSuccess(successMessage));
+      });
+    });
+
+    on<OnLoadWatchlistStatus>((event, emit) async {
+      final result = await _getWatchListStatus.execute(event.id);
+      emit(WatchlistStatusLoaded(result));
+    });
+
+    on<OnCall>((event, emit) async {
+      emit(CallCountAdded(event.callCount + 1));
+    });
   }
 }

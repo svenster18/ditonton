@@ -29,6 +29,7 @@ void main() {
   late MockGetWatchListStatus mockGetWatchlistStatus;
   late MockSaveWatchlist mockSaveWatchlist;
   late MockRemoveWatchlist mockRemoveWatchlist;
+  late int listenerCallCount;
 
   final tId = 1;
 
@@ -50,6 +51,7 @@ void main() {
   final tMovies = <Movie>[tMovie];
 
   setUp(() {
+    listenerCallCount = 0;
     mockGetMovieDetail = MockGetMovieDetail();
     mockGetMovieRecommendations = MockGetMovieRecommendations();
     mockGetWatchlistStatus = MockGetWatchListStatus();
@@ -61,7 +63,7 @@ void main() {
       mockGetWatchlistStatus,
       mockSaveWatchlist,
       mockRemoveWatchlist,
-    );
+    )..add((OnCall(listenerCallCount)));
   });
 
   void _arrangeUsecase() {
@@ -90,7 +92,9 @@ void main() {
           verify(mockGetMovieDetail.execute(tId));
           verify(mockGetMovieRecommendations.execute(tId));
         });
+  });
 
+  group('Get Movie Recommendation', () {
     blocTest<MovieDetailBloc, MovieDetailState>(
         'should update error message when request in successful',
         build: () {

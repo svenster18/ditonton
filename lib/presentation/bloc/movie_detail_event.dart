@@ -42,3 +42,12 @@ class OnLoadWatchlistStatus extends MovieDetailEvent {
   @override
   List<Object> get props => [id];
 }
+
+class OnCall extends MovieDetailEvent {
+  final int callCount;
+
+  const OnCall(this.callCount);
+
+  @override
+  List<Object> get props => [callCount];
+}

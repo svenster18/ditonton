@@ -11,36 +11,10 @@ final class MovieDetailEmpty extends MovieDetailState {}
 
 final class MovieDetailLoading extends MovieDetailState {}
 
-final class MovieRecommendationsLoading extends MovieDetailState {}
-
 final class MovieDetailHasData extends MovieDetailState {
   final MovieDetail movie;
 
   MovieDetailHasData(this.movie);
-}
-
-final class MovieRecommendationsHasData extends MovieDetailState {
-  final List<Movie> recommendations;
-
-  MovieRecommendationsHasData(this.recommendations);
-}
-
-final class MovieDetailWatchlistAdded extends MovieDetailState {
-  final String message;
-
-  MovieDetailWatchlistAdded(this.message);
-}
-
-final class MovieDetailWatchlistRemoved extends MovieDetailState {
-  final String message;
-
-  MovieDetailWatchlistRemoved(this.message);
-}
-
-final class MovieDetailHasWatchlistStatus extends MovieDetailState {
-  final bool isAddedToWatchlist;
-
-  MovieDetailHasWatchlistStatus(this.isAddedToWatchlist);
 }
 
 final class MovieDetailError extends MovieDetailState {
@@ -49,8 +23,40 @@ final class MovieDetailError extends MovieDetailState {
   MovieDetailError(this.message);
 }
 
+final class MovieRecommendationsLoading extends MovieDetailState {}
+
+final class MovieRecommendationsHasData extends MovieDetailState {
+  final List<Movie> recommendations;
+
+  MovieRecommendationsHasData(this.recommendations);
+}
+
 final class MovieRecommendationsError extends MovieDetailState {
   final String message;
 
   MovieRecommendationsError(this.message);
+}
+
+final class WatchlistSuccess extends MovieDetailState {
+  final String message;
+
+  WatchlistSuccess(this.message);
+}
+
+final class WatchlistError extends MovieDetailState {
+  final String message;
+
+  WatchlistError(this.message);
+}
+
+final class WatchlistStatusLoaded extends MovieDetailState {
+  final bool isAddedToWatchlist;
+
+  WatchlistStatusLoaded(this.isAddedToWatchlist);
+}
+
+final class CallCountAdded extends MovieDetailState {
+  final int callCount;
+
+  CallCountAdded(this.callCount);
 }
