@@ -57,6 +57,7 @@ class MovieDetailBloc extends Bloc<MovieDetailEvent, MovieDetailState> {
       }, (successMessage) async {
         emit(WatchlistSuccess(successMessage));
       });
+      add(OnLoadWatchlistStatus(event.movie.id));
     });
 
     on<OnRemoveWatchlist>((event, emit) async {
@@ -67,6 +68,7 @@ class MovieDetailBloc extends Bloc<MovieDetailEvent, MovieDetailState> {
       }, (successMessage) async {
         emit(WatchlistSuccess(successMessage));
       });
+      add(OnLoadWatchlistStatus(event.movie.id));
     });
 
     on<OnLoadWatchlistStatus>((event, emit) async {
