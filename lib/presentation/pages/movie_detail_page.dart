@@ -5,7 +5,6 @@ import 'package:ditonton/domain/entities/movie_detail.dart';
 import 'package:ditonton/presentation/bloc/movie_detail_bloc.dart';
 import 'package:ditonton/presentation/bloc/movie_recommendations_bloc.dart';
 import 'package:ditonton/presentation/bloc/watchlist_status_bloc.dart';
-import 'package:ditonton/presentation/provider/movie_detail_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -101,10 +100,10 @@ class DetailContent extends StatelessWidget {
                               final message = state.message;
 
                               if (message ==
-                                      MovieDetailNotifier
+                                      WatchlistBloc
                                           .watchlistAddSuccessMessage ||
                                   message ==
-                                      MovieDetailNotifier
+                                      WatchlistBloc
                                           .watchlistRemoveSuccessMessage) {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(content: Text(message)));
