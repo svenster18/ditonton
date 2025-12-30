@@ -7,6 +7,7 @@ import 'package:ditonton/injection.dart' as di;
 import 'package:ditonton/presentation/bloc/movie_detail_bloc.dart';
 import 'package:ditonton/presentation/bloc/movie_list_bloc.dart';
 import 'package:ditonton/presentation/bloc/movie_recommendations_bloc.dart';
+import 'package:ditonton/presentation/bloc/search_movies_bloc.dart';
 import 'package:ditonton/presentation/bloc/watchlist_status_bloc.dart';
 import 'package:ditonton/presentation/pages/about_page.dart';
 import 'package:ditonton/presentation/pages/home_movie_page.dart';
@@ -107,6 +108,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => di.locator<WatchlistTvSeriesNotifier>(),
         ),
+        BlocProvider(create: (_) => di.locator<SearchMoviesBloc>())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

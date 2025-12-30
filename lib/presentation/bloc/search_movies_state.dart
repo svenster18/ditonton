@@ -18,7 +18,7 @@ final class SearchMoviesError extends SearchMoviesState {
 }
 
 final class SearchMoviesLoaded extends SearchMoviesState {
-  final List<Movie> movies;
+  final List<Movie> result;
 
-  SearchMoviesLoaded(this.movies);
+  SearchMoviesLoaded(this.result);
 }
